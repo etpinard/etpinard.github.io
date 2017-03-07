@@ -1,0 +1,44 @@
+{
+  "name": "etpinard.github.io",
+  "version": "1.0.0",
+  "description": "Personal web page / page web personnelle",
+  "scripts": {
+    "lint": "standard --fix",
+    "test": "snazzy",
+    "start": "budo src/index.js --serve bundle.js --open --live",
+    "build": "browserify src/index.js | uglifyjs -m -c > bundle.js"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-markdown",
+      "yamlify",
+      "es2020",
+      "yo-yoify"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etpinard/etpinard.github.io.git"
+  },
+  "author": "Étienne Tétreault-Pinard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/etpinard/etpinard.github.io/issues"
+  },
+  "homepage": "https://github.com/etpinard/etpinard.github.io",
+  "dependencies": {
+    "browserify": "^14.1.0",
+    "browserify-markdown": "^2.0.1",
+    "dom-css": "^2.1.0",
+    "es2020": "^1.1.9",
+    "query-string": "^4.3.2",
+    "yamlify": "^0.1.3",
+    "yo-yo": "^1.4.0",
+    "yo-yoify": "^3.5.0"
+  },
+  "devDependencies": {
+    "budo": "^9.4.7",
+    "snazzy": "^6.0.0",
+    "standard": "^9.0.0"
+  }
+}

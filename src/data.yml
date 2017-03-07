@@ -1,0 +1,58 @@
+posts:
+    - type: block
+      date: 2016-11-06
+      tags: [js, mapbox-gl, 3D extrudes, d3, topojson, MTL-données-ouvertes]
+      name-en: Montreal population by borough with mapbox-gl 3D extrude
+      name-fr: Population de Montréal par arrondissement en 3D via mapbox-gl
+      id: 9cce3976acc33770bd1212adcc95c9fe
+      commit: addd3cf40b4a2a885850f06ea2783f94cb82287d
+
+    - type: block
+      date: 2016-12-09
+      tags: [JuliaLang, js, d3, climate, noaa]
+      name-en: Interactive contour maps of surface temperature anomalies in 2016
+      name-fr: Cartes interactive des anomalies de température à la surface de l'année 2016
+      id: 9338947b0f3427e10b3602172b6a59ec
+      commit: 0f68bfd40cd0f26e6227f80364c1b73b41c891a6
+      
+    - type: block
+      date: 2017-02-28
+      tags: [js, makefile, mapbox-gl, node.js-streams, MTL-données-ouvertes]
+      name-en: Animation of all 2016 Bixi trips
+      name-fr: Animation de tous les déplacements en Bixi de l'année 2016
+      id: 723d2513086a100fb9ffe9e4d6a19f1b
+      commit: 7684ab84d3db9666af32a178e721bfdf78a4b5b9
+
+    - type: oss
+      date: 2016-12-01
+      tags: [js, npm]
+      name: npm-link-check
+      description-en: CLI utility that checks whether a project's current node modules tree contains npm-link'ed packages
+      url: https://github.com/etpinard/npm-link-check
+   
+    - type: oss
+      date: 2016-12-08
+      tags: [js, npm, d3, rollup]
+      name: d3-geo-projection-picker
+      description-en: Hand-picked d3 geo projections
+      url: https://github.com/etpinard/d3-geo-projection-picker
+
+    - type: gist
+      date: 2016-08-18
+      tags: [js, test, tape]
+      description-en: Simple test server running tape test on an html page
+      url: https://gist.github.com/etpinard/9d492c9ec7acbf505fe9f59e3b3c0149
+
+# other constants
+
+username: etpinard
+
+block: https://bl.ocks.org/etpinard
+block_full: https://bl.ocks.org/etpinard/raw
+rawgit: https://cdn.rawgit.com/etpinard
+gist: https://gist.github.com/etpinard/
+
+github: https://github.com/etpinard
+twitter: https://twitter.com/etpinard
+linkedin: https://www.linkedin.com/in/%C3%A9tienne-t%C3%A9treault-pinard-62328240
+email: etienne.t.pinard@gmail.com
