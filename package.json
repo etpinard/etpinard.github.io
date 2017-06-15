@@ -4,7 +4,7 @@
   "description": "Personal web page / page web personnelle",
   "scripts": {
     "lint": "standard --fix",
-    "test": "snazzy",
+    "test": "standard | snazzy",
     "start": "budo src/index.js --serve bundle.js --open --live",
     "build": "browserify src/index.js | uglifyjs -m -c > bundle.js"
   },
@@ -26,8 +26,6 @@
   },
   "homepage": "https://github.com/etpinard/etpinard.github.io",
   "dependencies": {
-    "browserify": "^14.1.0",
-    "dom-css": "^2.1.0",
     "es2020": "^1.1.9",
     "octicons": "^5.0.1",
     "query-string": "^4.3.2",
@@ -36,8 +34,10 @@
     "yo-yoify": "^3.5.0"
   },
   "devDependencies": {
+    "browserify": "^14.1.0",
     "budo": "^9.4.7",
     "snazzy": "^6.0.0",
-    "standard": "^9.0.0"
+    "standard": "^9.0.0",
+    "uglify-js": "^3.0.15"
   }
 }

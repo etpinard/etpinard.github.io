@@ -1,22 +1,23 @@
 intro-en: |
     Thanks for checking my homepage out! My name is @name.
+
     I've been building and maintaining (mostly) software for @plotly since April 2014.
     I'm currently the lead of maintainer of @plotlyjs, plotly's open-source JavaScript graphing library.
 
-    For more info, you can find me a @twitter / @github / @linkedin or view my CV.
+    For more info, you can find me a @twitter / @github / @linkedin or view my @cv.
 
     My personal email is @email
 
 intro-fr: |
     Salut, je m'appelle @name et voici mon site.
+
     Je travaille présentement pour @plotly comme programmeur en JavaScript.
     Plus précisément, j'assume le rôle de chef d'équipe pour @plotlyjs,
     la bibliothèque JavaScript source ouverte de plotly.
 
-    Pour en savoir plus, allez voir mes profils @twitter / @github / @linkedin ou bien visionner mon CV.
+    Pour en savoir plus, allez voir mes profils @twitter / @github / @linkedin ou bien visionner mon @cv.
 
     Mon courriel personnel est le @email
-
 
 posts:
     - type: block
@@ -48,14 +49,14 @@ posts:
       tags: [js, npm]
       name: npm-link-check
       description-en: CLI utility that checks whether a project's current node modules tree contains npm-link'ed packages
-      description-fr: Command qui vérifie qu'un project ne comprend aucun module de node.js lié
+      description-fr: Commande qui vérifie qu'un project ne comprend aucun module de node.js lié
 
     - type: oss
       date: 2016-12-08
       tags: [js, npm, d3, rollup]
       name: d3-geo-projection-picker
-      description-en: Utility to hand-picked d3 geo projections instead of relying of the full d3-geo-projection module
-      description-fr: ...
+      description-en: Utility to hand-picked d3-geo projections instead of relying of the full d3-geo-projection module
+      description-fr: Module qui facilite la sélection de projections venant de d3-geo
 
     - type: gist
       date: 2016-08-18
@@ -64,16 +65,62 @@ posts:
       name-fr: Petit server pour rouler des tests tape sur une page html pré-faite
       id: 9d492c9ec7acbf505fe9f59e3b3c0149
 
-# other constants
+footer-en: |
+    This site is hosted on @ghpags and built with @yoyo / @tachyons / @heropatterns.
 
-block: https://bl.ocks.org/etpinard
-block_full: https://bl.ocks.org/etpinard/raw
-rawgit: https://cdn.rawgit.com/etpinard
-gist: https://gist.github.com/etpinard/
-github: https://github.com/etpinard
-twitter: https://twitter.com/etpinard
-linkedin: https://www.linkedin.com/in/%C3%A9tienne-t%C3%A9treault-pinard-62328240
-email: etienne.t.pinard@gmail.com
-name: Étienne Tétreault-Pinard
-plotly: https://plot.ly
-plotlyjs: https://github.com/etpinard
+footer-fr: |
+    Ce site est hébergé par @ghpags et conçu avec l'aide de @yoyo / @tachyons / @heropatterns.
+
+block:
+    type: link
+    val: https://bl.ocks.org/etpinard
+block_full:
+    type: link
+    val: https://bl.ocks.org/etpinard/raw
+rawgit:
+    type: link
+    val: https://cdn.rawgit.com/etpinard
+gist:
+    type: link
+    val: https://gist.github.com/etpinard/
+github:
+    type: link
+    val: https://github.com/etpinard
+twitter:
+    type: link
+    val: https://twitter.com/etpinard
+linkedin:
+    type: link
+    val: https://www.linkedin.com/in/%C3%A9tienne-t%C3%A9treault-pinard-62328240
+email:
+    type: email
+    val: etienne.t.pinard@gmail.com
+name:
+    type: str
+    val: Étienne Tétreault-Pinard
+plotly:
+    type: link
+    val: https://plot.ly
+plotlyjs:
+    type: link
+    val: https://github.com/plotly/plotly.js
+    content: plotly.js
+cv:
+    type: link
+    val: TODO
+    content: CV
+yoyo:
+    type: link
+    val: https://pages.github.com/
+    content: yo-yo
+tachyons:
+    type: link
+    val: http://tachyons.io/
+heropatterns:
+    type: link
+    val: http://www.heropatterns.com/
+    content: Hero Patterns
+ghpags:
+    type: link
+    val: https://pages.github.com/
+    content: GitHub pages

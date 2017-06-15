@@ -1,5 +1,4 @@
 const yo = require('yo-yo')
-const domCSS = require('dom-css')
 const queryString = require('query-string')
 const octicons = require('octicons')
 
@@ -18,28 +17,33 @@ const lang = () => {
   return LANGS[0]
 }
 
-const email = () => {
-  return yo`<span class="reverse">${DATA.email.split('').reverse().join('')}</span>`
-}
-
 const paragraph = (txt) => {
-  var words = txt.split(/(\s|[.,!?])/)
-  var hText = (w) => {
+  var lines = txt.split('\n\n')
+
+  var line2dom = (l) => {
+    var words = l.split(/(\s|[.,!?])/)
+    return yo`<p>${words.map(word2dom)}</p>`
+  }
+
+  var word2dom = (w) => {
     if (w.charAt(0) !== '@') return w
 
     var key = w.substr(1)
-    var val = DATA[key]
+    var spec = DATA[key]
+    var val = spec.val
+    var content = spec.content || key
 
-    if (val.substr(0, 8) === 'https://') {
-      return yo `<a href="${val}">${key}</a>`
-    } else if (key === 'email') {
-      return email()
-    } else {
-      return val
+    switch (spec.type) {
+      case 'link':
+        return yo`<a href="${val}" target="_blank" class="no-underline dark-blue hover-blue">${content}</a>`
+      case 'email':
+        return yo`<span class="reverse">${DATA.email.val.split('').reverse().join('')}</span>`
+      case 'str':
+        return val
     }
   }
 
-  return yo`<p>${words.map(hText)}</p>`
+  return yo`<p>${lines.map(line2dom)}</p>`
 }
 
 const header = () => {
@@ -52,7 +56,7 @@ const header = () => {
       .map(l => yo`<span class="${pads[rand()]} hover-blue">${l}</span>`)
 
     return yo`<div class="flex pt3 pl3 f2 fw8">
-      <span class="hover-dark-blue">@</span>
+      <span class="hover-blue">@</span>
       ${letters}
     </div>`
   }
@@ -85,7 +89,7 @@ const header = () => {
 const intro = () => {
   var txt = DATA[`intro-${lang()}`]
 
-  return yo`<div class="pb4">
+  return yo`<div class="lh-copy pv2 ph5-ns mw7-ns ph3">
     ${paragraph(txt)}
   </div>`
 }
@@ -107,7 +111,7 @@ const posts = () => {
 
   const icon = (k) => {
     const svgContainer = document.createElement('div')
-    svgContainer.innerHTML = octicons[k].toSVG({ width: 150, class: 'center h4'})
+    svgContainer.innerHTML = octicons[k].toSVG({width: 150, class: 'center h4'})
     svgContainer.firstChild.style.display = 'block'
     svgContainer.style['padding-top'] = '45px'
     svgContainer.style['padding-bottom'] = '45px'
@@ -115,8 +119,8 @@ const posts = () => {
   }
 
   post.block = (p) => {
-    const href = `${DATA.block}/${p.id}`
-    const gif = `${DATA.rawgit}/${p.id}/raw/${p.commit}/preview.gif`
+    const href = `${DATA.block.val}/${p.id}`
+    const gif = `${DATA.rawgit.val}/${p.id}/raw/${p.commit}/preview.gif`
     const n = p[`name-${lang()}`]
 
     return yo`<div>
@@ -129,7 +133,7 @@ const posts = () => {
   }
 
   post.oss = (p) => {
-    const href = `${DATA.github}/${p.name}`
+    const href = `${DATA.github.val}/${p.name}`
     const desc = p[`description-${lang()}`]
 
     return yo`<div>
@@ -145,7 +149,7 @@ const posts = () => {
   }
 
   post.gist = (p) => {
-    const href = `${DATA.gist}/${p.id}`
+    const href = `${DATA.gist.val}/${p.id}`
     const n = p[`name-${lang()}`]
 
     return yo`<div>
@@ -169,30 +173,21 @@ const posts = () => {
 }
 
 const footer = () => {
+  var txt = DATA[`footer-${lang()}`]
 
-}
-
-const cv = () => {
-  return yo`<div></div>`
-}
-
-const contact = () => {
-  // this site is hosted on github page
-  // see source code: ...
-
-  // http://www.heropatterns.com/
-
-  return yo`<div></div>`
+  return yo`<div class="center f7 pv3 ph3">
+    ${paragraph(txt)}
+  </div>`
 }
 
 const body = () => {
-  return yo`<div>
+  return yo`<div style="background-color: #F8F8FF;">
     ${header()}
-    <div class="hero">
-      ${intro()}
+    ${intro()}
+    <div class="hero pa1">
       ${posts()}
     </div>
-  ${contact()}
+  ${footer()}
   </div>`
 }
 
