@@ -1,15 +1,15 @@
-const yo = require('yo-yo')
-const queryString = require('query-string')
-const octicons = require('octicons')
+var yo = require('yo-yo')
+var queryString = require('query-string')
+var octicons = require('octicons')
 
-const DATA = require('./data.yml')
-const LANGS = ['en', 'fr']
+var DATA = require('./data.yml')
+var LANGS = ['en', 'fr']
 
-const lang = () => {
-  const isValid = (s) => LANGS.indexOf(s) !== -1
-  const queryLang = queryString.parse(window.location.hash).lang
-  const navLang = (window.navigator.languages || [])[0]
-  const navLang2 = navLang.substr(0, 2)
+var lang = () => {
+  var isValid = (s) => LANGS.indexOf(s) !== -1
+  var queryLang = queryString.parse(window.location.hash).lang
+  var navLang = (window.navigator.languages || [])[0]
+  var navLang2 = navLang.substr(0, 2)
 
   if (isValid(queryLang)) return queryLang
   if (typeof navLang !== 'string') return LANGS[0]
@@ -17,7 +17,7 @@ const lang = () => {
   return LANGS[0]
 }
 
-const paragraph = (txt) => {
+var paragraph = (txt) => {
   var lines = txt.split('\n\n')
 
   var line2dom = (l) => {
@@ -46,12 +46,12 @@ const paragraph = (txt) => {
   return yo`<p>${lines.map(line2dom)}</p>`
 }
 
-const header = () => {
-  const title = () => {
-    const pads = ['pt1', 'pt2', '', 'pb1', 'pb2']
-    const rand = () => Math.floor(pads.length * Math.random())
+var header = () => {
+  var title = () => {
+    var pads = ['pt1', 'pt2', '', 'pb1', 'pb2']
+    var rand = () => Math.floor(pads.length * Math.random())
 
-    const letters = 'etpinard'
+    var letters = 'etpinard'
       .split('')
       .map(l => yo`<span class="${pads[rand()]} hover-blue">${l}</span>`)
 
@@ -61,10 +61,10 @@ const header = () => {
     </div>`
   }
 
-  const $title = title()
+  var $title = title()
 
-  const $buttons = LANGS.map(l => {
-    const onclick = () => {
+  var $buttons = LANGS.map(l => {
+    var onclick = () => {
       window.location.hash = queryString.stringify({lang: l})
       yo.update($body, body())
     }
@@ -86,7 +86,7 @@ const header = () => {
   </nav>`
 }
 
-const intro = () => {
+var intro = () => {
   var txt = DATA[`intro-${lang()}`]
 
   return yo`<div class="lh-copy pv2 ph5-ns mw7-ns ph3">
@@ -94,23 +94,23 @@ const intro = () => {
   </div>`
 }
 
-const posts = () => {
-  const date = (p) => (new Date(p.date)).getTime()
-  const cardClass = 'link black dim db pa2 br2 ba b--black-10 shadow-1'
-  const post = {}
+var posts = () => {
+  var date = (p) => (new Date(p.date)).getTime()
+  var cardClass = 'link black dim db pa2 br2 ba b--black-10 shadow-1'
+  var post = {}
 
-  const tags = (p) => {
-    const spans = p.tags
+  var tags = (p) => {
+    var spans = p.tags
       .map(t => yo`<span class="pl2 f6"><i>#${t}</i></span>`)
     return yo`<p class="pv2 h2">${spans}</p>`
   }
 
-  const name = (n) => {
+  var name = (n) => {
     return yo`<span class="db f5 pv3 fw6 h2">${n}</span>`
   }
 
-  const icon = (k) => {
-    const svgContainer = document.createElement('div')
+  var icon = (k) => {
+    var svgContainer = document.createElement('div')
     svgContainer.innerHTML = octicons[k].toSVG({width: 150, class: 'center h4'})
     svgContainer.firstChild.style.display = 'block'
     svgContainer.style['padding-top'] = '45px'
@@ -119,9 +119,9 @@ const posts = () => {
   }
 
   post.block = (p) => {
-    const href = `${DATA.block.val}/${p.id}`
-    const gif = `${DATA.rawgit.val}/${p.id}/raw/${p.commit}/preview.gif`
-    const n = p[`name-${lang()}`]
+    var href = `${DATA.block.val}/${p.id}`
+    var gif = `${DATA.rawgit.val}/${p.id}/raw/${p.commit}/preview.gif`
+    var n = p[`name-${lang()}`]
 
     return yo`<div>
       <a href="${href}" target="_blank" class="${cardClass}">
@@ -133,8 +133,8 @@ const posts = () => {
   }
 
   post.oss = (p) => {
-    const href = `${DATA.github.val}/${p.name}`
-    const desc = p[`description-${lang()}`]
+    var href = `${DATA.github.val}/${p.name}`
+    var desc = p[`description-${lang()}`]
 
     return yo`<div>
       <a href="${href}" target="_blank" class="${cardClass}">
@@ -149,8 +149,8 @@ const posts = () => {
   }
 
   post.gist = (p) => {
-    const href = `${DATA.gist.val}/${p.id}`
-    const n = p[`name-${lang()}`]
+    var href = `${DATA.gist.val}/${p.id}`
+    var n = p[`name-${lang()}`]
 
     return yo`<div>
       <a href="${href}" target="_blank" class="${cardClass}">
@@ -163,7 +163,7 @@ const posts = () => {
     </div>`
   }
 
-  const $items = DATA.posts
+  var $items = DATA.posts
     .sort((a, b) => date(b) - date(a))
     .map(p => yo`<div class="fl w-100 w-third-ns pa2">${post[p.type](p)}</div>`)
 
@@ -172,7 +172,7 @@ const posts = () => {
   </div>`
 }
 
-const footer = () => {
+var footer = () => {
   var txt = DATA[`footer-${lang()}`]
 
   return yo`<div class="center f7 pv3 ph3">
@@ -180,7 +180,7 @@ const footer = () => {
   </div>`
 }
 
-const body = () => {
+var body = () => {
   return yo`<div style="background-color: #F8F8FF;">
     ${header()}
     ${intro()}
@@ -191,6 +191,6 @@ const body = () => {
   </div>`
 }
 
-const $body = body()
+var $body = body()
 
 document.body.appendChild($body)
