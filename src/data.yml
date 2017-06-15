@@ -1,0 +1,126 @@
+intro-en: |
+    Thanks for checking my homepage out! My name is @name.
+
+    I've been building and maintaining (mostly) software for @plotly since April 2014.
+    I'm currently the lead of maintainer of @plotlyjs, plotly's open-source JavaScript graphing library.
+
+    For more info, you can find me a @twitter / @github / @linkedin or view my @cv.
+
+    My personal email is @email
+
+intro-fr: |
+    Salut, je m'appelle @name et voici mon site.
+
+    Je travaille présentement pour @plotly comme programmeur en JavaScript.
+    Plus précisément, j'assume le rôle de chef d'équipe pour @plotlyjs,
+    la bibliothèque JavaScript source ouverte de plotly.
+
+    Pour en savoir plus, allez voir mes profils @twitter / @github / @linkedin ou bien visionner mon @cv.
+
+    Mon courriel personnel est le @email
+
+posts:
+    - type: block
+      date: 2016-11-06
+      tags: [js, mapbox-gl, 3D-extrudes, d3, topojson, MTL-données-ouvertes]
+      name-en: Montreal population by borough with mapbox-gl 3D extrude
+      name-fr: Population de Montréal par arrondissement en 3D via mapbox-gl
+      id: 9cce3976acc33770bd1212adcc95c9fe
+      commit: addd3cf40b4a2a885850f06ea2783f94cb82287d
+
+    - type: block
+      date: 2016-12-09
+      tags: [JuliaLang, js, d3, climate, noaa]
+      name-en: Interactive contour maps of surface temperature anomalies in 2016
+      name-fr: Cartes interactive des anomalies de température à la surface de l'année 2016
+      id: 9338947b0f3427e10b3602172b6a59ec
+      commit: 0f68bfd40cd0f26e6227f80364c1b73b41c891a6
+
+    - type: block
+      date: 2017-02-28
+      tags: [js, makefile, mapbox-gl, node.js-streams, MTL-données-ouvertes]
+      name-en: Animation of all 2016 Bixi trips
+      name-fr: Animation de tous les déplacements en Bixi de l'année 2016
+      id: 723d2513086a100fb9ffe9e4d6a19f1b
+      commit: 7684ab84d3db9666af32a178e721bfdf78a4b5b9
+
+    - type: oss
+      date: 2016-12-01
+      tags: [js, npm]
+      name: npm-link-check
+      description-en: CLI utility that checks whether a project's current node modules tree contains npm-link'ed packages
+      description-fr: Commande qui vérifie qu'un project ne comprend aucun module de node.js lié
+
+    - type: oss
+      date: 2016-12-08
+      tags: [js, npm, d3, rollup]
+      name: d3-geo-projection-picker
+      description-en: Utility to hand-picked d3-geo projections instead of relying of the full d3-geo-projection module
+      description-fr: Module qui facilite la sélection de projections venant de d3-geo
+
+    - type: gist
+      date: 2016-08-18
+      tags: [js, test, tape]
+      name-en: Simple test server running tape test on an html page
+      name-fr: Petit server pour rouler des tests tape sur une page html pré-faite
+      id: 9d492c9ec7acbf505fe9f59e3b3c0149
+
+footer-en: |
+    This site is hosted on @ghpags and built with @yoyo / @tachyons / @heropatterns.
+
+footer-fr: |
+    Ce site est hébergé par @ghpags et conçu avec l'aide de @yoyo / @tachyons / @heropatterns.
+
+block:
+    type: link
+    val: https://bl.ocks.org/etpinard
+block_full:
+    type: link
+    val: https://bl.ocks.org/etpinard/raw
+rawgit:
+    type: link
+    val: https://cdn.rawgit.com/etpinard
+gist:
+    type: link
+    val: https://gist.github.com/etpinard/
+github:
+    type: link
+    val: https://github.com/etpinard
+twitter:
+    type: link
+    val: https://twitter.com/etpinard
+linkedin:
+    type: link
+    val: https://www.linkedin.com/in/%C3%A9tienne-t%C3%A9treault-pinard-62328240
+email:
+    type: email
+    val: etienne.t.pinard@gmail.com
+name:
+    type: str
+    val: Étienne Tétreault-Pinard
+plotly:
+    type: link
+    val: https://plot.ly
+plotlyjs:
+    type: link
+    val: https://github.com/plotly/plotly.js
+    content: plotly.js
+cv:
+    type: link
+    val: TODO
+    content: CV
+yoyo:
+    type: link
+    val: https://pages.github.com/
+    content: yo-yo
+tachyons:
+    type: link
+    val: http://tachyons.io/
+heropatterns:
+    type: link
+    val: http://www.heropatterns.com/
+    content: Hero Patterns
+ghpags:
+    type: link
+    val: https://pages.github.com/
+    content: GitHub pages
