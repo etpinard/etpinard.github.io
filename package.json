@@ -6,6 +6,7 @@
     "lint": "standard --fix",
     "test": "standard | snazzy",
     "start": "budo src/index.js --serve bundle.js --open --live",
+    "disc": "browserify src/index.js --full-paths | discify --open",
     "build": "browserify src/index.js | uglifyjs -m -c > bundle.js"
   },
   "browserify": {
@@ -36,6 +37,7 @@
   "devDependencies": {
     "browserify": "^14.1.0",
     "budo": "^9.4.7",
+    "disc": "^1.3.2",
     "snazzy": "^6.0.0",
     "standard": "^9.0.0",
     "uglify-js": "^3.0.15"
