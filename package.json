@@ -7,7 +7,9 @@
     "test": "standard | snazzy",
     "start": "budo src/index.js --serve bundle.js --open --live",
     "disc": "browserify src/index.js --full-paths | discify --open",
-    "build": "browserify src/index.js | uglifyjs -m -c > bundle.js"
+    "build:css": "cp -f node_modules/octicons/build/octicons.min.css .",
+    "build:js": "browserify src/index.js | uglifyjs -m -c > bundle.js",
+    "build": "npm run build:css && npm run build:js"
   },
   "browserify": {
     "transform": [
