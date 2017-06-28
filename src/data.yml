@@ -111,7 +111,7 @@ cv:
     content: CV
 yoyo:
     type: link
-    val: https://pages.github.com/
+    val: https://github.com/maxogden/yo-yo
     content: yo-yo
 tachyons:
     type: link
