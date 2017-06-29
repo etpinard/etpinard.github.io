@@ -66,10 +66,10 @@ posts:
       id: 9d492c9ec7acbf505fe9f59e3b3c0149
 
 footer-en: |
-    This site is hosted on @ghpags and built with @yoyo / @tachyons / @heropatterns.
+    This @siterepo is hosted on @ghpags and built with @yoyo / @tachyons / @heropatterns.
 
 footer-fr: |
-    Ce site est hébergé par @ghpags et conçu avec l'aide de @yoyo / @tachyons / @heropatterns.
+    Ce @siterepo est hébergé par @ghpags et conçu avec l'aide de @yoyo / @tachyons / @heropatterns.
 
 block:
     type: link
@@ -111,7 +111,7 @@ cv:
     content: CV
 yoyo:
     type: link
-    val: https://pages.github.com/
+    val: https://github.com/maxogden/yo-yo
     content: yo-yo
 tachyons:
     type: link
@@ -124,3 +124,7 @@ ghpags:
     type: link
     val: https://pages.github.com/
     content: GitHub pages
+siterepo:
+    type: link
+    val: https://github.com/etpinard/etpinard.github.io
+    content: site

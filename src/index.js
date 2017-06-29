@@ -55,35 +55,44 @@ var header = () => {
       .split('')
       .map(l => yo`<span class="${pads[rand()]} hover-blue">${l}</span>`)
 
-    return yo`<div class="flex pt3 pl3 f2 fw8">
+    return yo`<div class="flex pt3 pl3 f1 fw8">
       <span class="hover-blue">@</span>
       ${letters}
     </div>`
   }
 
+  var buttons = (extraClasses) => {
+    return LANGS.map(l => {
+      var onclick = () => {
+        window.location.hash = queryString.stringify({lang: l})
+        yo.update($body, body())
+      }
+
+      return yo`<div
+        class="f4 black bg-animate hover-bg-blue no-underline pv1 ph2 br1 mh0 ba b--dark-blue ${extraClasses}"
+        onclick=${onclick}>${l}
+      </div>`
+    })
+  }
+
   var $title = title()
 
-  var $buttons = LANGS.map(l => {
-    var onclick = () => {
-      window.location.hash = queryString.stringify({lang: l})
-      yo.update($body, body())
-    }
-
-    return yo`<div
-      class="f6 dib black bg-animate hover-bg-blue no-underline pv1 ph2 br1 mh0 ba b--dark-blue"
-      onclick=${onclick}>${l}
-    </div>`
-  })
+  var $buttons = buttons('dib dn-ns')
+  var $buttonsNS = buttons('dn dib-ns')
 
   setInterval(() => yo.update($title, title()), 2000)
 
-  return yo`
+  return yo`<div>
     <nav class="flex justify-between bb b--white-10 pb3">
       ${$title}
       <div class="flex-grow pa3 flex items-center ttu">
+        ${$buttonsNS}
+      </div>
+    </nav>
+      <div class="pa3 ttu">
         ${$buttons}
       </div>
-  </nav>`
+  </div>`
 }
 
 var intro = () => {
