@@ -30,7 +30,7 @@
   "homepage": "https://github.com/etpinard/etpinard.github.io",
   "dependencies": {
     "es2020": "^1.1.9",
-    "octicons": "^5.0.1",
+    "octicons": "git://github.com/etpinard/octicons.git#etpinard.xyz",
     "query-string": "^4.3.2",
     "yamlify": "^0.1.3",
     "yo-yo": "^1.4.0",
