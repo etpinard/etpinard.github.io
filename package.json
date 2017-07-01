@@ -31,6 +31,7 @@
   "homepage": "https://github.com/etpinard/etpinard.github.io",
   "dependencies": {
     "es2020": "^1.1.9",
+    "is-mobile-device": "^1.0.0",
     "octicons": "git://github.com/etpinard/octicons.git#etpinard.xyz",
     "query-string": "^4.3.2",
     "yamlify": "^0.1.3",

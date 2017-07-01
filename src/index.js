@@ -2,6 +2,7 @@ var yo = require('yo-yo')
 var queryString = require('query-string')
 var octicons = require('octicons')
 
+var IS_MOBILE = require('is-mobile-device')
 var DATA = require('./data.yml')
 var LANGS = ['en', 'fr']
 
@@ -129,13 +130,15 @@ var posts = () => {
 
   post.block = (p) => {
     var href = `${DATA.block.val}/${p.id}`
-    var gif = `build/preview-${p.id}.gif`
     var n = p[`name-${lang()}`]
+    var imgSrc = IS_MOBILE
+      ? `build/thumbnail-${p.id}.png`
+      : `build/preview-${p.id}.gif`
 
     return yo`<div>
       <a href="${href}" target="_blank" class="${cardClass}">
         ${name(n)}
-        <img src="${gif}" alt="${n}" class="center db mv2 h5" />
+        <img src="${imgSrc}" alt="${n}" class="center db mv2 h5" />
         ${tags(p)}
       </a>
     </div>`
