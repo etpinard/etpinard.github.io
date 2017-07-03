@@ -1,1 +1,9 @@
-# build bundle.js push to `master` branch
+language: node_js
+node_js:
+    - node
+
+deploy:
+   - provider: script
+     script: bin/deploy.sh
+     on:
+       branch: source
