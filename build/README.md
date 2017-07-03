@@ -1,0 +1,1 @@
+Built asset directory.

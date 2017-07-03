@@ -79,7 +79,7 @@ block_full:
     val: https://bl.ocks.org/etpinard/raw
 rawgit:
     type: link
-    val: https://cdn.rawgit.com/etpinard
+    val: https://rawgit.com/etpinard
 gist:
     type: link
     val: https://gist.github.com/etpinard/
