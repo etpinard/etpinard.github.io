@@ -129,7 +129,7 @@ var posts = () => {
 
   post.block = (p) => {
     var href = `${DATA.block.val}/${p.id}`
-    var gif = `${DATA.rawgit.val}/${p.id}/raw/${p.commit}/preview.gif`
+    var gif = `build/preview-${p.id}.gif`
     var n = p[`name-${lang()}`]
 
     return yo`<div>
@@ -190,7 +190,7 @@ var footer = () => {
 }
 
 var body = () => {
-  return yo`<div style="background-color: #F8F8FF;">
+  return yo`<div style="background-color: ${DATA.colors.bg};">
     ${header()}
     ${intro()}
     <div class="hero pa1">

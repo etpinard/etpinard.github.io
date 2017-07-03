@@ -79,7 +79,7 @@ block_full:
     val: https://bl.ocks.org/etpinard/raw
 rawgit:
     type: link
-    val: https://cdn.rawgit.com/etpinard
+    val: https://rawgit.com/etpinard
 gist:
     type: link
     val: https://gist.github.com/etpinard/
@@ -128,3 +128,6 @@ siterepo:
     type: link
     val: https://github.com/etpinard/etpinard.github.io
     content: site
+
+colors:
+    bg: "#F8F8FF"
