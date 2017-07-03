@@ -128,3 +128,6 @@ siterepo:
     type: link
     val: https://github.com/etpinard/etpinard.github.io
     content: site
+
+colors:
+    bg: "#F8F8FF"
