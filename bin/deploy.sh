@@ -2,11 +2,11 @@
 
 DATE=$(date)
 
+git remote -vvvv
+
 git fetch origin master:master
 git checkout master
 git merge source --no-commit
-
-git remote -vvvv
 
 npm install
 npm run build
