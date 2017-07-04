@@ -3,7 +3,12 @@
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 
+git fetch origin master
+git checkout master
+git merge source --no-commit
+
 npm run build
+
 git add --all
 git commit -m "Travis build: $TRAVIS_BUILD_NUMBER"
 
