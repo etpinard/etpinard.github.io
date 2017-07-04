@@ -1,6 +1,6 @@
 #! /bin/bash -e
 
-DATE=$(DATE)
+DATE=$(date)
 
 git checkout master
 git merge source
