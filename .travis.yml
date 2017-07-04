@@ -5,6 +5,5 @@ node_js:
 deploy:
    - provider: script
      script: bash bin/deploy.sh
-     skip_cleanup: true
      on:
        branch: source
