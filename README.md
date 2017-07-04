@@ -11,4 +11,4 @@ The `master` branch contains the built assets served on GitHub pages.
 
 ---
 
-This sit is hosted on GitHub Pages and built with yo-yo / tachyons / Hero Patterns.
+This site is hosted on GitHub Pages and built with yo-yo / tachyons / Hero Patterns.
