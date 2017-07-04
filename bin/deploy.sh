@@ -2,7 +2,7 @@
 
 DATE=$(date)
 
-git fetch master
+git fetch origin master:master
 git checkout master
 git merge source
 npm install
