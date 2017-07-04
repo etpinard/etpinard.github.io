@@ -1,12 +1,16 @@
 #! /bin/bash -e
 
-DATE=$(date)
+git config --global user.email "travis@travis-ci.org"
+git config --global user.name "Travis CI"
 
 git fetch origin master:master
 git checkout master
-git merge source
-npm install
+git merge source --no-commit
+
 npm run build
-git add build
-git commit -m "$DATE build"
-git push origin master
+
+git add --all
+git commit -m "Travis build: $TRAVIS_BUILD_NUMBER"
+
+git remote add origin-travis https://${GH_TOKEN}@github.com/etpinard/etpinard.github.io.git
+git push origin-travis master
