@@ -3,7 +3,7 @@
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 
-git fetch origin master
+git fetch origin master:master
 git checkout master
 git merge source --no-commit
 
