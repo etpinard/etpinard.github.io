@@ -2,19 +2,28 @@ var yo = require('yo-yo')
 var queryString = require('query-string')
 var octicons = require('octicons')
 
+var IS_MOBILE = require('is-mobile-device')
 var DATA = require('./data.yml')
 var LANGS = ['en', 'fr']
 
-var lang = () => {
-  var isValid = (s) => LANGS.indexOf(s) !== -1
-  var queryLang = queryString.parse(window.location.hash).lang
-  var navLang = (window.navigator.languages || [])[0]
-  var navLang2 = navLang.substr(0, 2)
+var isLangSupported = (s) => LANGS.indexOf(s) !== -1
 
-  if (isValid(queryLang)) return queryLang
-  if (typeof navLang !== 'string') return LANGS[0]
-  if (isValid(navLang2)) return navLang2
+var NAVLANG = (() => {
+  var v = (window.navigator.languages || [])[0]
+
+  if (typeof v === 'string') {
+    var vv = v.substr(0, 2)
+    if (isLangSupported(v)) return vv
+  }
   return LANGS[0]
+})()
+
+var lang = () => {
+  var queryLang = queryString.parse(window.location.hash).lang
+
+  return isLangSupported(queryLang)
+    ? queryLang
+    : NAVLANG
 }
 
 var paragraph = (txt) => {
@@ -62,14 +71,19 @@ var header = () => {
   }
 
   var buttons = (extraClasses) => {
-    return LANGS.map(l => {
+    var langs = [NAVLANG, LANGS.filter(l => l !== NAVLANG)[0]]
+
+    return langs.map(l => {
       var onclick = () => {
         window.location.hash = queryString.stringify({lang: l})
         yo.update($body, body())
       }
 
+      var commonClasses = 'f4 black bg-animate hover-bg-blue gno-underline pv1 ph2 br1 mh0 ba b--dark-blue'
+      var activeClasses = l === lang() ? 'bg-light-gray' : ''
+
       return yo`<div
-        class="f4 black bg-animate hover-bg-blue no-underline pv1 ph2 br1 mh0 ba b--dark-blue ${extraClasses}"
+        class="${commonClasses} ${activeClasses} ${extraClasses}"
         onclick=${onclick}>${l}
       </div>`
     })
@@ -129,13 +143,15 @@ var posts = () => {
 
   post.block = (p) => {
     var href = `${DATA.block.val}/${p.id}`
-    var gif = `build/preview-${p.id}.gif`
     var n = p[`name-${lang()}`]
+    var imgSrc = IS_MOBILE
+      ? `build/thumbnail-${p.id}.png`
+      : `build/preview-${p.id}.gif`
 
     return yo`<div>
       <a href="${href}" target="_blank" class="${cardClass}">
         ${name(n)}
-        <img src="${gif}" alt="${n}" class="center db mv2 h5" />
+        <img src="${imgSrc}" alt="${n}" class="center db mv2 h5" />
         ${tags(p)}
       </a>
     </div>`

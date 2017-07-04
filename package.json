@@ -31,6 +31,7 @@
   "homepage": "https://github.com/etpinard/etpinard.github.io",
   "dependencies": {
     "es2020": "^1.1.9",
+    "is-mobile-device": "^1.0.0",
     "octicons": "git://github.com/etpinard/octicons.git#etpinard.xyz",
     "query-string": "^4.3.2",
     "yamlify": "^0.1.3",
@@ -45,8 +46,8 @@
     "fs-extra": "^3.0.1",
     "js-yaml": "^3.8.4",
     "request": "^2.81.0",
-    "snazzy": "^6.0.0",
-    "standard": "^9.0.0",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.2",
     "uglify-js": "^3.0.15"
   }
 }
