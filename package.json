@@ -9,7 +9,7 @@
     "disc": "browserify src/index.js --full-paths | discify --open",
     "build:img": "node bin/build_img.js",
     "build:css": "node bin/build_css.js",
-    "build:js": "browserify src/index.js | uglifyjs -m -c > build/bundle.js",
+    "build:js": "node bin/build_js.js",
     "build": "npm run build:img && npm run build:css && npm run build:js"
   },
   "browserify": {
