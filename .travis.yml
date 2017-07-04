@@ -4,6 +4,6 @@ node_js:
 
 deploy:
    - provider: script
-     script: bin/deploy.sh
+     script: bash bin/deploy.sh
      on:
        branch: source
