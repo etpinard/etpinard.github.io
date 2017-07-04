@@ -1,9 +1,9 @@
 language: node_js
 node_js:
-    - node
+    - "6"
 
 deploy:
    - provider: script
-     script: bin/deploy.sh
+     script: bash bin/deploy.sh
      on:
        branch: source
