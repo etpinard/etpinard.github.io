@@ -107,7 +107,7 @@ plotlyjs:
     content: plotly.js
 cv:
     type: link
-    val: TODO
+    val: https://i.imgur.com/vIL8FJM.gif
     content: CV
 yoyo:
     type: link
