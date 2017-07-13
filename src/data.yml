@@ -4,7 +4,7 @@ intro-en: |
     I've been building and maintaining (mostly) software for @plotly since April 2014.
     I'm currently the lead maintainer of @plotlyjs, plotly's open-source JavaScript graphing library.
 
-    For more info, you can find me on @twitter / @github / @linkedin or view my @cv.
+    For more info, you can find me on @twitter / @github / @linkedin or view my @cv-en.
 
     My personal email is @email
 
@@ -15,7 +15,7 @@ intro-fr: |
     Plus précisément, j'assume le rôle de chef d'équipe pour @plotlyjs,
     la bibliothèque JavaScript source ouverte de plotly.
 
-    Pour en savoir plus, allez voir mes profils @twitter / @github / @linkedin ou bien visionner mon @cv.
+    Pour en savoir plus, allez voir mes profils @twitter / @github / @linkedin ou bien visionner mon @cv-fr.
 
     Mon courriel personnel est le @email
 
@@ -105,9 +105,13 @@ plotlyjs:
     type: link
     val: https://github.com/plotly/plotly.js
     content: plotly.js
-cv:
+cv-en:
     type: link
-    val: https://i.imgur.com/vIL8FJM.gif
+    val: https://github.com/etpinard/cv/blob/master/en/cv.pdf
+    content: CV
+cv-fr:
+    type: link
+    val: https://github.com/etpinard/cv/blob/master/fr/cv.pdf
     content: CV
 yoyo:
     type: link
