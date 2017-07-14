@@ -34,7 +34,7 @@ posts:
       name-en: Interactive contour maps of surface temperature anomalies in 2016
       name-fr: Cartes interactive des anomalies de température à la surface de l'année 2016
       id: 9338947b0f3427e10b3602172b6a59ec
-      commit: 0f68bfd40cd0f26e6227f80364c1b73b41c891a6
+      commit: 33d9423b9434143e4a8673965b2087c93a160426
 
     - type: block
       date: 2017-02-28
