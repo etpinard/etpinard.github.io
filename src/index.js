@@ -230,6 +230,7 @@ var cv = () => {
     var onclick = () => {
       window.location.hash = queryString.stringify({lang: l})
       yo.update($body, body())
+      window.scroll(0, 0)
     }
 
     var content = {
