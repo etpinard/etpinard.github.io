@@ -106,13 +106,13 @@ plotlyjs:
     val: https://github.com/plotly/plotly.js
     content: plotly.js
 cv-en:
-    type: link
-    val: https://github.com/etpinard/cv/blob/master/en/cv.pdf
-    content: CV
+    type: cv
+    folder: en
+    commit: c801818845eb9743d0bb2e55eb5de464ebd6e5d8
 cv-fr:
-    type: link
-    val: https://github.com/etpinard/cv/blob/master/fr/cv.pdf
-    content: CV
+    type: cv
+    folder: fr
+    commit: c801818845eb9743d0bb2e55eb5de464ebd6e5d8
 yoyo:
     type: link
     val: https://github.com/maxogden/yo-yo
