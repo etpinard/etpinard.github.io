@@ -44,9 +44,25 @@ var paragraph = (txt) => {
 
     switch (spec.type) {
       case 'link':
-        return yo`<a href="${val}" target="_blank" class="no-underline dark-blue hover-blue">${content}</a>`
+        return yo`<a
+          href="${val}"
+          target="_blank"
+          class="no-underline dark-blue hover-blue"
+        >${content}</a>`
       case 'email':
-        return yo`<span class="reverse">${DATA.email.val.split('').reverse().join('')}</span>`
+        return yo`<span
+          class="reverse"
+        >${DATA.email.val.split('').reverse().join('')}</span>`
+      case 'cv':
+        var onclick = () => {
+          window.location.hash = queryString.stringify({lang: lang(), cv: true})
+          yo.update($body, body())
+        }
+        return yo`<span
+          class="dark-blue hover-blue"
+          style="cursor:pointer;"
+          onclick=${onclick}
+        >CV</span>`
       case 'str':
         return val
     }
@@ -205,15 +221,70 @@ var footer = () => {
   </div>`
 }
 
-var body = () => {
-  return yo`<div style="background-color: ${DATA.colors.bg};">
-    ${header()}
-    ${intro()}
-    <div class="hero pa1">
-      ${posts()}
-    </div>
-  ${footer()}
+var cv = () => {
+  var l = lang()
+  var png = `build/cv-${l}.png`
+  var pdf = `build/cv-${l}.pdf`
+
+  var goBackBtn = () => {
+    var onclick = () => {
+      window.location.hash = queryString.stringify({lang: l})
+      yo.update($body, body())
+    }
+
+    var content = {
+      en: 'Go back to site',
+      fr: 'Retour au site'
+    }[l]
+
+    return yo`<div class="pv1">
+      <span
+          class="dark-blue hover-blue"
+          style="cursor:pointer;"
+          onclick=${onclick}
+      >${content}</span>
+    </div>`
+  }
+
+  var downloadBtn = () => {
+    var content = {
+      en: 'Download PDF',
+      fr: 'Télécharger en PDF'
+    }[l]
+
+    return yo`<div class="pv1">
+      <a
+        href=${pdf}
+        download="etpinard-cv.pdf"
+        class="no-underline dark-blue hover-blue"
+      >${content}</a>
+    </div>`
+  }
+
+  return yo`<div>
+    <nav class="fixed f5 bg-white mv3 mh3">
+      ${goBackBtn()}
+      ${downloadBtn()}
+    </nav>
+    <img src=${png} alt="cv-${l}" />
   </div>`
+}
+
+var body = () => {
+  var isCV = queryString.parse(window.location.hash).cv
+
+  if (isCV) {
+    return yo`${cv()}`
+  } else {
+    return yo`<div style="background-color: ${DATA.colors.bg};">
+      ${header()}
+      ${intro()}
+      <div class="hero pa1">
+        ${posts()}
+      </div>
+      ${footer()}
+    </div>`
+  }
 }
 
 var $body = body()
