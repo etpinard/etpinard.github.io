@@ -4,6 +4,7 @@ var yaml = require('js-yaml')
 var request = require('request')
 var noop = () => {}
 
+var CVs = ['cv-en', 'cv-fr']
 var BUILD = path.join(__dirname, '..', 'build')
 var SRC = path.join(__dirname, '..', 'src')
 
@@ -39,4 +40,13 @@ DATA.posts
       `${root}/thumbnail.png`,
       path.join(BUILD, `thumbnail-${p.id}.png`)
     )
+  })
+
+CVs
+  .forEach((n) => {
+    var d = DATA[n]
+    var root = `${DATA.rawgit.val}/cv/${d.commit}/${d.folder}`
+
+    download(`${root}/cv.png`, path.join(BUILD, `${n}.png`))
+    download(`${root}/cv.pdf`, path.join(BUILD, `${n}.pdf`))
   })
