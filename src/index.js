@@ -56,7 +56,6 @@ var paragraph = (txt) => {
       case 'cv':
         var onclick = () => {
           window.location.hash = queryString.stringify({lang: lang(), cv: true})
-          yo.update($body, body())
         }
         return yo`<span
           class="dark-blue hover-blue"
@@ -92,7 +91,6 @@ var header = () => {
     return langs.map(l => {
       var onclick = () => {
         window.location.hash = queryString.stringify({lang: l})
-        yo.update($body, body())
       }
 
       var commonClasses = 'f4 black bg-animate hover-bg-blue gno-underline pv1 ph2 br1 mh0 ba b--dark-blue'
@@ -229,7 +227,6 @@ var cv = () => {
   var goBackBtn = () => {
     var onclick = () => {
       window.location.hash = queryString.stringify({lang: l})
-      yo.update($body, body())
       window.scroll(0, 0)
     }
 
@@ -291,3 +288,7 @@ var body = () => {
 var $body = body()
 
 document.body.appendChild($body)
+
+window.onhashchange = () => {
+  yo.update($body, body())
+}
