@@ -235,13 +235,11 @@ var cv = () => {
       fr: 'Retour au site'
     }[l]
 
-    return yo`<div class="pv1">
-      <span
-          class="dark-blue hover-blue"
-          style="cursor:pointer;"
-          onclick=${onclick}
-      >${content}</span>
-    </div>`
+    return yo`<span
+        class="f5 no-underline black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box mr4"
+        style="cursor:pointer;"
+        onclick=${onclick}
+    >${content}</span>`
   }
 
   var downloadBtn = () => {
@@ -250,30 +248,38 @@ var cv = () => {
       fr: 'Télécharger en PDF'
     }[l]
 
-    return yo`<div class="pv1">
-      <a
-        href=${pdf}
-        download="etpinard-cv.pdf"
-        class="no-underline dark-blue hover-blue"
-      >${content}</a>
-    </div>`
+    return yo` <a
+      href=${pdf}
+      download="etpinard-cv.pdf"
+      class="f6 no-underline black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box"
+    >${content}</a>`
   }
 
   return yo`<div>
-    <nav class="fixed f5 bg-white mv3 mh3">
+    <div class="fixed flex tems-center justify-center pa4 w-100 bg-blue">
       ${goBackBtn()}
       ${downloadBtn()}
-    </nav>
-    <img src=${png} alt="cv-${l}" />
+    </div>
+    <div class="db">
+      <img src=${png} alt="cv-${l}" class="center mt6" />
+    </div class="db">
   </div>`
 }
 
 var body = () => {
   var isCV = queryString.parse(window.location.hash).cv
+  var $viewPort = document.getElementById('viewport')
 
   if (isCV) {
+    if (IS_MOBILE) {
+      $viewPort.setAttribute('content', DATA.viewport.cv)
+    }
     return yo`${cv()}`
   } else {
+    if (IS_MOBILE) {
+      $viewPort.setAttribute('content', DATA.viewport.home)
+    }
+
     return yo`<div style="background-color: ${DATA.colors.bg};">
       ${header()}
       ${intro()}

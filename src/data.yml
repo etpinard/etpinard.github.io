@@ -135,3 +135,7 @@ siterepo:
 
 colors:
     bg: "#F8F8FF"
+
+viewport:
+    home: "width=device-width, shrink-to-fit=0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    cv: "width=device-width, minimum-scale=1, maximum-scale=3"
