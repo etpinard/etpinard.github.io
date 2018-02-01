@@ -2,12 +2,6 @@ language: node_js
 node_js:
     - "8"
 
-install:
-  - npm install
-  - npm dedupe
-  - npm prune
-  - npm install
-
 deploy:
    - provider: script
      script: bash bin/deploy.sh
