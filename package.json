@@ -4,7 +4,7 @@
   "description": "Personal web page / page web personnelle",
   "scripts": {
     "lint": "standard --fix",
-    "test": "standard | snazzy",
+    "test": "standard | snazzy && npm run build",
     "start": "budo src/index.js --serve build/bundle.js --open --live",
     "disc": "browserify src/index.js --full-paths | discify --open",
     "build:img": "node bin/build_img.js",
