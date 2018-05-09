@@ -108,11 +108,11 @@ plotlyjs:
 cv-en:
     type: cv
     folder: en
-    commit: c801818845eb9743d0bb2e55eb5de464ebd6e5d8
+    commit: 0942a20e1baf39a773666f869c91143056fa0ead
 cv-fr:
     type: cv
     folder: fr
-    commit: c801818845eb9743d0bb2e55eb5de464ebd6e5d8
+    commit: 0942a20e1baf39a773666f869c91143056fa0ead
 yoyo:
     type: link
     val: https://github.com/maxogden/yo-yo
