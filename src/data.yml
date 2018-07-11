@@ -32,7 +32,7 @@ posts:
       date: 2017-11-01
       tags: [plotly, plotly.js, d3, js]
       name-en: Violin plots in plotly.js
-      name-fr: Diagrammes de violins de plotly.js
+      name-fr: Diagrammes de violons de plotly.js
       id: 685686f1b90a39241b447c84fd9973d8
       commit: 77a3acae85c0ba8688fd31276590e22ffff51ec4
 
