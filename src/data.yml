@@ -101,9 +101,12 @@ block:
 block_full:
     type: link
     val: https://bl.ocks.org/etpinard/raw
-rawgit:
+rawgist:
     type: link
-    val: https://rawgit.com/etpinard
+    val: https://gist.githubusercontent.com/etpinard
+rawgithub:
+    type: link
+    val: https://raw.githubusercontent.com/etpinard
 gist:
     type: link
     val: https://gist.github.com/etpinard/
@@ -132,11 +135,11 @@ plotlyjs:
 cv-en:
     type: cv
     folder: en
-    commit: 57c6ba29b67aedad5328f803906bb7f5c36e70fd
+    commit: 35231a70666097f5786327f3fd8aca2365c7e561
 cv-fr:
     type: cv
     folder: fr
-    commit: 57c6ba29b67aedad5328f803906bb7f5c36e70fd
+    commit: 35231a70666097f5786327f3fd8aca2365c7e561
 yoyo:
     type: link
     val: https://github.com/maxogden/yo-yo

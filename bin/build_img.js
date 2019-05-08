@@ -30,7 +30,7 @@ var download = (uri, filename, cb) => {
 DATA.posts
   .filter((p) => p.type === 'block')
   .forEach((p) => {
-    var root = `${DATA.rawgit.val}/${p.id}/raw/${p.commit}/`
+    var root = `${DATA.rawgist.val}/${p.id}/raw/${p.commit}/`
 
     download(
       `${root}/preview.gif`,
@@ -45,7 +45,7 @@ DATA.posts
 CVs
   .forEach((n) => {
     var d = DATA[n]
-    var root = `${DATA.rawgit.val}/cv/${d.commit}/${d.folder}`
+    var root = `${DATA.rawgithub.val}/cv/${d.commit}/${d.folder}`
 
     download(`${root}/cv.png`, path.join(BUILD, `${n}.png`))
     download(`${root}/cv.pdf`, path.join(BUILD, `${n}.pdf`))
