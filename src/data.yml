@@ -1,8 +1,7 @@
 intro-en: |
     Thanks for checking my homepage out! My name is @name.
 
-    I've been building and maintaining (mostly) software for @plotly since April 2014.
-    I'm currently the lead maintainer of @plotlyjs, plotly's open-source JavaScript graphing library.
+    I'm currently working as a Data Science Developer for @r2.
 
     For more info, you can find me on @twitter / @github / @linkedin or view my @cv-en.
 
@@ -11,9 +10,7 @@ intro-en: |
 intro-fr: |
     Salut, je m'appelle @name et voici mon site.
 
-    Je travaille présentement pour @plotly comme programmeur en JavaScript.
-    Plus précisément, j'assume le rôle de chef d'équipe pour @plotlyjs,
-    la bibliothèque JavaScript source ouverte de plotly.
+    Je travaille présentement pour @r2 à titre de développeur science des données.
 
     Pour en savoir plus, allez voir mes profils @twitter / @github / @linkedin ou bien visionner mon @cv-fr.
 
@@ -125,21 +122,18 @@ email:
 name:
     type: str
     val: Étienne Tétreault-Pinard
-plotly:
+r2:
     type: link
-    val: https://plot.ly
-plotlyjs:
-    type: link
-    val: https://github.com/plotly/plotly.js
-    content: plotly.js
+    val: http://r2.ca/
+    content: R2
 cv-en:
     type: cv
     folder: en
-    commit: 35231a70666097f5786327f3fd8aca2365c7e561
+    commit: 5637afd58d8eb1c0994305baec40b8203b9cd47a
 cv-fr:
     type: cv
     folder: fr
-    commit: 35231a70666097f5786327f3fd8aca2365c7e561
+    commit: 5637afd58d8eb1c0994305baec40b8203b9cd47a
 yoyo:
     type: link
     val: https://github.com/maxogden/yo-yo
