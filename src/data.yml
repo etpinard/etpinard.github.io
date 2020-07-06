@@ -55,7 +55,7 @@ posts:
       name-en: Interactive contour maps of surface temperature anomalies in 2016
       name-fr: Cartes interactive des anomalies de température à la surface de l'année 2016
       id: 9338947b0f3427e10b3602172b6a59ec
-      commit: 33d9423b9434143e4a8673965b2087c93a160426
+      commit: 04485e8914f93d80b354e347b29966520f5bf009
 
     - type: block
       date: 2017-02-28
@@ -63,7 +63,7 @@ posts:
       name-en: Animation of all 2016 Bixi trips
       name-fr: Animation de tous les déplacements en Bixi de l'année 2016
       id: 723d2513086a100fb9ffe9e4d6a19f1b
-      commit: 7684ab84d3db9666af32a178e721bfdf78a4b5b9
+      commit: fc98865cd941d42243f01bb90f971023c31bb156
 
     - type: oss
       date: 2016-12-01
