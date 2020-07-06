@@ -47,7 +47,7 @@ posts:
       name-en: Montreal population by borough with mapbox-gl 3D extrude
       name-fr: Population de Montréal par arrondissement en 3D via mapbox-gl
       id: 9cce3976acc33770bd1212adcc95c9fe
-      commit: addd3cf40b4a2a885850f06ea2783f94cb82287d
+      commit: 04485e8914f93d80b354e347b29966520f5bf009
 
     - type: block
       date: 2016-12-09
@@ -55,7 +55,7 @@ posts:
       name-en: Interactive contour maps of surface temperature anomalies in 2016
       name-fr: Cartes interactive des anomalies de température à la surface de l'année 2016
       id: 9338947b0f3427e10b3602172b6a59ec
-      commit: 04485e8914f93d80b354e347b29966520f5bf009
+      commit: 33d9423b9434143e4a8673965b2087c93a160426
 
     - type: block
       date: 2017-02-28
