@@ -23,7 +23,7 @@ posts:
       name-en: Polar charts in plotly.js
       name-fr: Graphiques en coordonnées polaires de plotly.js
       id: 188c797eeb963f461c170df7cb2bc464
-      commit: 4c93d9a3eb5f86f9f71b8d969c8ad3ece14952a3
+      commit: 79a19a8711a4c8927c6760e2ca45274776b978ad
 
     - type: block
       date: 2017-11-01
@@ -31,7 +31,7 @@ posts:
       name-en: Violin plots in plotly.js
       name-fr: Diagrammes de violons de plotly.js
       id: 685686f1b90a39241b447c84fd9973d8
-      commit: 77a3acae85c0ba8688fd31276590e22ffff51ec4
+      commit: 7a61b3b440ca2ed7bc2c52720ce7f60a29b4674c
 
     - type: block
       date: 2017-06-01
@@ -39,7 +39,7 @@ posts:
       name-en: d3-geo's map fit and clip playground
       name-fr: Terrain de jeux pour projections d3-geo
       id: f5d9afd6de6f53f49eecb6fa01352b7e
-      commit: 03d4fba8f1b71742557957bab47a7e34bea9547e
+      commit: 50a34b264aaf5eda4ac85825cd665337df720e6a
 
     - type: block
       date: 2016-11-06
