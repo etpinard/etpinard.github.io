@@ -124,7 +124,7 @@ name:
     val: Étienne Tétreault-Pinard
 r2:
     type: link
-    val: http://r2.ca/
+    val: https://r2.ca/
     content: R2
 cv-en:
     type: cv
@@ -140,10 +140,10 @@ yoyo:
     content: yo-yo
 tachyons:
     type: link
-    val: http://tachyons.io/
+    val: https://tachyons.io/
 heropatterns:
     type: link
-    val: http://www.heropatterns.com/
+    val: https://www.heropatterns.com/
     content: Hero Patterns
 ghpags:
     type: link
