@@ -171,6 +171,22 @@ var posts = () => {
     </div>`
   }
 
+  post.gistview = (p) => {
+    var href = `${DATA.gistview.val}?id=${p.id}`
+    var n = p[`name-${lang()}`]
+    var imgSrc = IS_MOBILE
+      ? `build/thumbnail-${p.id}.png`
+      : `build/preview-${p.id}.gif`
+
+    return yo`<div>
+      <a href="${href}" target="_blank" class="${cardClass}">
+        ${name(n)}
+        <img src="${imgSrc}" alt="${n}" class="center db mv2 h5" />
+        ${tags(p)}
+      </a>
+    </div>`
+  }
+
   post.oss = (p) => {
     var href = `${DATA.github.val}/${p.name}`
     var desc = p[`description-${lang()}`]
