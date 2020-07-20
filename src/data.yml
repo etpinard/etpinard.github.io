@@ -17,7 +17,7 @@ intro-fr: |
     Mon courriel personnel est le @email
 
 posts:
-    - type: block
+    - type: gistview
       date: 2018-01-01
       tags: [plotly, plotly.js, d3, js]
       name-en: Polar charts in plotly.js
@@ -25,7 +25,7 @@ posts:
       id: 188c797eeb963f461c170df7cb2bc464
       commit: 79a19a8711a4c8927c6760e2ca45274776b978ad
 
-    - type: block
+    - type: gistview
       date: 2017-11-01
       tags: [plotly, plotly.js, d3, js]
       name-en: Violin plots in plotly.js
@@ -33,7 +33,7 @@ posts:
       id: 685686f1b90a39241b447c84fd9973d8
       commit: 7a61b3b440ca2ed7bc2c52720ce7f60a29b4674c
 
-    - type: block
+    - type: gistview
       date: 2017-06-01
       tags: [js, d3]
       name-en: d3-geo's map fit and clip playground
@@ -98,6 +98,9 @@ block:
 block_full:
     type: link
     val: https://bl.ocks.org/etpinard/raw
+gistview:
+    type: link
+    val: https://etpinard.xyz/gist/
 rawgist:
     type: link
     val: https://gist.githubusercontent.com/etpinard
