@@ -132,11 +132,11 @@ r2:
 cv-en:
     type: cv
     folder: en
-    commit: d482b64e7878eee4fa7c066910d3e59c3e112f61
+    commit: 0258ad75c7c167d262b627279fb6b47502701738
 cv-fr:
     type: cv
     folder: fr
-    commit: d482b64e7878eee4fa7c066910d3e59c3e112f61
+    commit: 0258ad75c7c167d262b627279fb6b47502701738
 yoyo:
     type: link
     val: https://github.com/maxogden/yo-yo
