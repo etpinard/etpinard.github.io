@@ -121,7 +121,7 @@ linkedin:
     val: https://www.linkedin.com/in/%C3%A9tienne-t%C3%A9treault-pinard-62328240
 email:
     type: email
-    val: etienne.t.pinard@gmail.com
+    val: info@etpinard.xyz
 name:
     type: str
     val: Étienne Tétreault-Pinard
