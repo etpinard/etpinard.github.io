@@ -5,7 +5,7 @@ intro-en: |
 
     For more info, you can find me on @twitter / @github / @linkedin or view my @cv-en.
 
-    My personal email is @email
+    My personal email is @email and my GPG public key is available @gpg-en.
 
 intro-fr: |
     Salut, je m'appelle @name et voici mon site.
@@ -14,7 +14,7 @@ intro-fr: |
 
     Pour en savoir plus, allez voir mes profils @twitter / @github / @linkedin ou bien visionner mon @cv-fr.
 
-    Mon courriel personnel est le @email
+    Mon courriel personnel est le @email et ma clé publique GPG est disponible @gpg-fr.
 
 posts:
     - type: gistview
@@ -122,6 +122,14 @@ linkedin:
 email:
     type: email
     val: info@etpinard.xyz
+gpg-en:
+    type: link
+    val: ./key.pub
+    content: here
+gpg-fr:
+    type: link
+    val: ./key.pub
+    content: ici
 name:
     type: str
     val: Étienne Tétreault-Pinard
