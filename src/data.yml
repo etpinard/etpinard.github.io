@@ -120,7 +120,7 @@ linkedin:
     type: link
     val: https://www.linkedin.com/in/%C3%A9tienne-t%C3%A9treault-pinard-62328240
 email:
-    type: email
+    type: reverse-str
     val: info@etpinard.xyz
 gpg-en:
     type: link
@@ -131,7 +131,7 @@ gpg-fr:
     val: ./key.pub
     content: ici
 name:
-    type: str
+    type: reverse-str
     val: Étienne Tétreault-Pinard
 r2:
     type: link
