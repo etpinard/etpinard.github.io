@@ -49,10 +49,10 @@ var paragraph = (txt) => {
           target="_blank"
           class="no-underline dark-blue hover-blue"
         >${content}</a>`
-      case 'email':
+      case 'reverse-str':
         return yo`<span
           class="reverse"
-        >${DATA.email.val.split('').reverse().join('')}</span>`
+        >${val.split('').reverse().join('')}</span>`
       case 'cv':
         var onclick = () => {
           window.location.hash = queryString.stringify({lang: lang(), cv: true})
