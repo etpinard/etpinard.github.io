@@ -5,7 +5,7 @@ intro-en: |
 
     For more info, you can find me on @twitter / @github / @linkedin or view my @cv-en.
 
-    My personal email is @email
+    My personal email is @email and my GPG public key is available @gpg-en.
 
 intro-fr: |
     Salut, je m'appelle @name et voici mon site.
@@ -14,7 +14,7 @@ intro-fr: |
 
     Pour en savoir plus, allez voir mes profils @twitter / @github / @linkedin ou bien visionner mon @cv-fr.
 
-    Mon courriel personnel est le @email
+    Mon courriel personnel est le @email et ma clé publique GPG est disponible @gpg-fr.
 
 posts:
     - type: gistview
@@ -120,10 +120,18 @@ linkedin:
     type: link
     val: https://www.linkedin.com/in/%C3%A9tienne-t%C3%A9treault-pinard-62328240
 email:
-    type: email
-    val: etienne.t.pinard@gmail.com
+    type: reverse-str
+    val: info@etpinard.xyz
+gpg-en:
+    type: link
+    val: ./key.pub
+    content: here
+gpg-fr:
+    type: link
+    val: ./key.pub
+    content: ici
 name:
-    type: str
+    type: reverse-str
     val: Étienne Tétreault-Pinard
 r2:
     type: link
@@ -132,11 +140,11 @@ r2:
 cv-en:
     type: cv
     folder: en
-    commit: d482b64e7878eee4fa7c066910d3e59c3e112f61
+    commit: 0258ad75c7c167d262b627279fb6b47502701738
 cv-fr:
     type: cv
     folder: fr
-    commit: d482b64e7878eee4fa7c066910d3e59c3e112f61
+    commit: 0258ad75c7c167d262b627279fb6b47502701738
 yoyo:
     type: link
     val: https://github.com/maxogden/yo-yo
