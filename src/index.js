@@ -150,8 +150,8 @@ var posts = () => {
     var svgContainer = document.createElement('div')
     svgContainer.innerHTML = octicons[k].toSVG({width: 150, class: 'center h4'})
     svgContainer.firstChild.style.display = 'block'
-    svgContainer.style['padding-top'] = '45px'
-    svgContainer.style['padding-bottom'] = '45px'
+    svgContainer.style['padding-top'] = '36px'
+    svgContainer.style['padding-bottom'] = '36px'
     return svgContainer
   }
 
