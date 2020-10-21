@@ -3,7 +3,7 @@ intro-en: |
 
     I'm currently working as a Data Science Developer for @r2.
 
-    For more info, you can find me on @twitter / @github / @linkedin or view my @cv-en.
+    For more info, you can find me on @twitter / @github / @gitlab / @linkedin or view my @cv-en.
 
     My personal email is @email and my GPG public key is available @gpg-en.
 
@@ -12,7 +12,7 @@ intro-fr: |
 
     Je travaille présentement pour @r2 à titre de développeur science des données.
 
-    Pour en savoir plus, allez voir mes profils @twitter / @github / @linkedin ou bien visionner mon @cv-fr.
+    Pour en savoir plus, allez voir mes profils @twitter / @github / @gitlab / @linkedin ou bien visionner mon @cv-fr.
 
     Mon courriel personnel est le @email et ma clé publique GPG est disponible @gpg-fr.
 
@@ -113,6 +113,9 @@ gist:
 github:
     type: link
     val: https://github.com/etpinard
+gitlab:
+    type: link
+    val: https://gitlab.com/etpinard
 twitter:
     type: link
     val: https://twitter.com/etpinard
