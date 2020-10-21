@@ -3,8 +3,16 @@ var queryString = require('query-string')
 var octicons = require('octicons')
 
 var IS_MOBILE = require('is-mobile-device')
-var DATA = require('./data.yml')
 var LANGS = ['en', 'fr']
+
+var fs = require('fs')
+var yaml = require('js-yaml')
+var DATA
+try {
+  DATA = yaml.safeLoad(fs.readFileSync(__dirname + '/data.yml', 'utf8'))
+} catch (err) {
+  console.error(err)
+}
 
 var isLangSupported = (s) => LANGS.indexOf(s) !== -1
 

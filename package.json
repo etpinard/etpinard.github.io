@@ -14,7 +14,7 @@
   },
   "browserify": {
     "transform": [
-      "yamlify",
+      "brfs",
       "es2020",
       "yo-yoify"
     ]
@@ -30,11 +30,11 @@
   },
   "homepage": "https://github.com/etpinard/etpinard.github.io",
   "dependencies": {
+    "brfs": "^2.0.2",
     "es2020": "^1.1.9",
     "is-mobile-device": "^1.0.0",
     "octicons": "git://github.com/etpinard/octicons.git#etpinard.xyz",
     "query-string": "^4.3.2",
-    "yamlify": "^0.2.0",
     "yo-yo": "^1.4.0",
     "yo-yoify": "^3.5.0"
   },
