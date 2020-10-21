@@ -55,7 +55,7 @@ var paragraph = (txt) => {
         >${val.split('').reverse().join('')}</span>`
       case 'cv':
         var onclick = () => {
-          window.location.hash = queryString.stringify({lang: lang(), cv: true})
+          window.location.hash = queryString.stringify({ lang: lang(), cv: true })
         }
         return yo`<span
           class="dark-blue hover-blue"
@@ -90,7 +90,7 @@ var header = () => {
 
     return langs.map(l => {
       var onclick = () => {
-        window.location.hash = queryString.stringify({lang: l})
+        window.location.hash = queryString.stringify({ lang: l })
       }
 
       var commonClasses = 'f4 black bg-animate hover-bg-blue gno-underline pv1 ph2 br1 mh0 ba b--dark-blue'
@@ -148,7 +148,7 @@ var posts = () => {
 
   var icon = (k) => {
     var svgContainer = document.createElement('div')
-    svgContainer.innerHTML = octicons[k].toSVG({width: 150, class: 'center h4'})
+    svgContainer.innerHTML = octicons[k].toSVG({ width: 150, class: 'center h4' })
     svgContainer.firstChild.style.display = 'block'
     svgContainer.style['padding-top'] = '36px'
     svgContainer.style['padding-bottom'] = '36px'
@@ -258,7 +258,7 @@ var cv = () => {
 
   var goBackBtn = () => {
     var onclick = () => {
-      window.location.hash = queryString.stringify({lang: l})
+      window.location.hash = queryString.stringify({ lang: l })
       window.scroll(0, 0)
     }
 

@@ -46,8 +46,8 @@
     "fs-extra": "^3.0.1",
     "js-yaml": "^3.14.0",
     "request": "^2.88.2",
-    "snazzy": "^7.0.0",
-    "standard": "^10.0.2",
+    "snazzy": "^8.0.0",
+    "standard": "^14.3.4",
     "uglify-js": "^3.11.3"
   }
 }
