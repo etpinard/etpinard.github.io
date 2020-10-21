@@ -203,6 +203,22 @@ var posts = () => {
     </div>`
   }
 
+  post.oss_gitlab = (p) => {
+    var href = `${DATA.gitlab.val}/${p.name}`
+    var desc = p[`description-${lang()}`]
+
+    return yo`<div>
+      <a href="${href}" target="_blank" class="${cardClass}">
+        ${name(p.name)}
+        ${icon('repo')}
+        <div class="h4 pv2">
+          <p class="f6" style="text-align: justify;">${desc}</p>
+          ${tags(p)}
+        </div>
+      </a>
+    </div>`
+  }
+
   post.gist = (p) => {
     var href = `${DATA.gist.val}/${p.id}`
     var n = p[`name-${lang()}`]

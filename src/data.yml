@@ -86,6 +86,27 @@ posts:
       name-fr: Petit server pour rouler des tests tape sur une page html pré-faite
       id: 9d492c9ec7acbf505fe9f59e3b3c0149
 
+    - type: gist
+      date: 2017-10-11
+      tags: [orca, electron, js, plotly.js]
+      name-en: "Orca proof-of-concept: electron app for exporting plotly graphs as images"
+      name-fr: "Preuve de concept pour Orca: application electron pour exporter graphiques plotly"
+      id: 26731a74bd746bc471ffeeafdc58612b
+
+    - type: oss_gitlab
+      date: 2020-09-28
+      tags: [lineageos, degoogle]
+      name: lineageos-install-docs
+      description-en: "LineageOS 17.1 installation docs for a Motorola G7+ and degoogled privacy-focused config steps"
+      description-fr: "Documentation pour installer LineageOS 17.1 sur un Motorola G7+ et configuration pour un appereil degooglé"
+
+    - type: oss_gitlab
+      date: 2020-10-16
+      tags: [calcurse, git, signal, degoogle]
+      name: calcurserve
+      description-en: "Recipe for building your own 100% private calendar app using calcurse, git and signal-cli"
+      description-fr: "Recette pour concevoir une application de calendrier 100% privée avec calcurse, git et signal-cli"
+
 footer-en: |
     This @siterepo is hosted on @ghpags and built with @yoyo / @tachyons / @heropatterns.
 
