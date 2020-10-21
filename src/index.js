@@ -72,7 +72,7 @@ var paragraph = (txt) => {
 
 var header = () => {
   var title = () => {
-    var pads = ['pt1', 'pt2', '', 'pb1']
+    var pads = ['pt1', 'pt2', '']
     var rand = () => Math.floor(pads.length * Math.random())
 
     var letters = 'etpinard'
