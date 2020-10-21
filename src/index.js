@@ -126,7 +126,7 @@ var header = () => {
 var intro = () => {
   var txt = DATA[`intro-${lang()}`]
 
-  return yo`<div class="lh-copy pv2 ph5-ns mw7-ns ph3">
+  return yo`<div class="lh-copy pv2 ph5-ns mw8-ns ph3">
     ${paragraph(txt)}
   </div>`
 }
