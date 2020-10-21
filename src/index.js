@@ -72,7 +72,7 @@ var paragraph = (txt) => {
 
 var header = () => {
   var title = () => {
-    var pads = ['pt1', 'pt2', '', 'pb1']
+    var pads = ['pt1', 'pt2', '']
     var rand = () => Math.floor(pads.length * Math.random())
 
     var letters = 'etpinard'
@@ -126,7 +126,7 @@ var header = () => {
 var intro = () => {
   var txt = DATA[`intro-${lang()}`]
 
-  return yo`<div class="lh-copy pv2 ph5-ns mw7-ns ph3">
+  return yo`<div class="lh-copy pv2 ph5-ns mw8-ns ph3">
     ${paragraph(txt)}
   </div>`
 }
@@ -150,8 +150,8 @@ var posts = () => {
     var svgContainer = document.createElement('div')
     svgContainer.innerHTML = octicons[k].toSVG({width: 150, class: 'center h4'})
     svgContainer.firstChild.style.display = 'block'
-    svgContainer.style['padding-top'] = '45px'
-    svgContainer.style['padding-bottom'] = '45px'
+    svgContainer.style['padding-top'] = '36px'
+    svgContainer.style['padding-bottom'] = '36px'
     return svgContainer
   }
 
@@ -203,6 +203,22 @@ var posts = () => {
     </div>`
   }
 
+  post.oss_gitlab = (p) => {
+    var href = `${DATA.gitlab.val}/${p.name}`
+    var desc = p[`description-${lang()}`]
+
+    return yo`<div>
+      <a href="${href}" target="_blank" class="${cardClass}">
+        ${name(p.name)}
+        ${icon('repo')}
+        <div class="h4 pv2">
+          <p class="f6" style="text-align: justify;">${desc}</p>
+          ${tags(p)}
+        </div>
+      </a>
+    </div>`
+  }
+
   post.gist = (p) => {
     var href = `${DATA.gist.val}/${p.id}`
     var n = p[`name-${lang()}`]
@@ -211,7 +227,7 @@ var posts = () => {
       <a href="${href}" target="_blank" class="${cardClass}">
         ${name(n)}
         ${icon('file-code')}
-        <div class="h4 pv2">
+        <div class="h4 pt5 pb2">
           ${tags(p)}
         </div>
       </a>

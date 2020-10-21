@@ -28,7 +28,7 @@ var download = (uri, filename, cb) => {
 }
 
 DATA.posts
-  .filter((p) => p.type === 'block')
+  .filter((p) => p.type === 'block' || p.type === 'gistview')
   .forEach((p) => {
     var root = `${DATA.rawgist.val}/${p.id}/raw/${p.commit}/`
 
