@@ -211,7 +211,7 @@ var posts = () => {
       <a href="${href}" target="_blank" class="${cardClass}">
         ${name(n)}
         ${icon('file-code')}
-        <div class="h4 pv2">
+        <div class="h4 pt5 pb2">
           ${tags(p)}
         </div>
       </a>
