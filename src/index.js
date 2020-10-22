@@ -237,10 +237,10 @@ var posts = () => {
 
   var $items = DATA.posts
     .sort((a, b) => date(b) - date(a))
-    .map(p => yo`<div class="fl w-100 w-third-ns pa2">${post[p.type](p)}</div>`)
+    .map(p => yo`<div class="fl w-100 w-third-l pa2">${post[p.type](p)}</div>`)
 
-  return yo`<div class="mw9 center ph3-ns">
-    <div class="cf ph2-ns">${$items}</div>
+  return yo`<div class="mw9 center ph3-l">
+    <div class="cf ph2-l">${$items}</div>
   </div>`
 }
 
