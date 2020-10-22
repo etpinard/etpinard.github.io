@@ -3,7 +3,8 @@ var queryString = require('query-string')
 var octicons = require('octicons')
 
 var IS_MOBILE = require('is-mobile-device')
-var DATA = require('./data.yml')
+
+var DATA = require('../build/data.json')
 var LANGS = ['en', 'fr']
 
 var isLangSupported = (s) => LANGS.indexOf(s) !== -1
@@ -55,7 +56,7 @@ var paragraph = (txt) => {
         >${val.split('').reverse().join('')}</span>`
       case 'cv':
         var onclick = () => {
-          window.location.hash = queryString.stringify({lang: lang(), cv: true})
+          window.location.hash = queryString.stringify({ lang: lang(), cv: true })
         }
         return yo`<span
           class="dark-blue hover-blue"
@@ -90,7 +91,7 @@ var header = () => {
 
     return langs.map(l => {
       var onclick = () => {
-        window.location.hash = queryString.stringify({lang: l})
+        window.location.hash = queryString.stringify({ lang: l })
       }
 
       var commonClasses = 'f4 black bg-animate hover-bg-blue gno-underline pv1 ph2 br1 mh0 ba b--dark-blue'
@@ -148,7 +149,7 @@ var posts = () => {
 
   var icon = (k) => {
     var svgContainer = document.createElement('div')
-    svgContainer.innerHTML = octicons[k].toSVG({width: 150, class: 'center h4'})
+    svgContainer.innerHTML = octicons[k].toSVG({ width: 150, class: 'center h4' })
     svgContainer.firstChild.style.display = 'block'
     svgContainer.style['padding-top'] = '36px'
     svgContainer.style['padding-bottom'] = '36px'
@@ -236,10 +237,10 @@ var posts = () => {
 
   var $items = DATA.posts
     .sort((a, b) => date(b) - date(a))
-    .map(p => yo`<div class="fl w-100 w-third-ns pa2">${post[p.type](p)}</div>`)
+    .map(p => yo`<div class="fl w-100 w-third-l pa2">${post[p.type](p)}</div>`)
 
-  return yo`<div class="mw9 center ph3-ns">
-    <div class="cf ph2-ns">${$items}</div>
+  return yo`<div class="mw9 center ph3-l">
+    <div class="cf ph2-l">${$items}</div>
   </div>`
 }
 
@@ -258,7 +259,7 @@ var cv = () => {
 
   var goBackBtn = () => {
     var onclick = () => {
-      window.location.hash = queryString.stringify({lang: l})
+      window.location.hash = queryString.stringify({ lang: l })
       window.scroll(0, 0)
     }
 
