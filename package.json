@@ -20,6 +20,11 @@
       "yo-yoify"
     ]
   },
+  "standard": {
+    "ignore": [
+      "build/bundle.js"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/etpinard/etpinard.github.io.git"
