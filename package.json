@@ -54,6 +54,6 @@
     "request": "^2.88.2",
     "snazzy": "^9.0.0",
     "standard": "^15.0.1",
-    "uglify-js": "^3.11.3"
+    "uglify-js": "^3.11.4"
   }
 }
