@@ -73,12 +73,23 @@ var paragraph = (txt) => {
 
 var header = () => {
   var title = () => {
-    var pads = ['pt1', 'pt2', '']
-    var rand = () => Math.floor(pads.length * Math.random())
+    var _letters = 'etpinard'.split('')
+    var pads = ['pb2', 'pb1', '', 'pt1', 'pt2']
+    var rand = () => pads[Math.floor(pads.length * Math.random())]
 
-    var letters = 'etpinard'
-      .split('')
-      .map(l => yo`<span class="${pads[rand()]} hover-blue">${l}</span>`)
+    // make sure letters with start/end pads values are always rendered
+    // to avoid the header to wiggle w/o having to hack in some css
+    // I don't about
+    var rands = _letters.map(rand)
+    var extremes = [0, pads.length - 1]
+    extremes.forEach(p => {
+      if (rands.indexOf(pads[p]) === -1) {
+        rands[p] = pads[p]
+      }
+    })
+
+    var letters = _letters
+      .map((l, i) => yo`<span class="${rands[i]} hover-blue">${l}</span>`)
 
     return yo`<div class="flex pt3 pl3 f1 fw8">
       <span class="hover-blue">@</span>
