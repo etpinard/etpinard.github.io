@@ -1,8 +1,8 @@
 var yo = require('yo-yo')
 var queryString = require('query-string')
 var octicons = require('octicons')
-
 var IS_MOBILE = require('is-mobile-device')
+var trunc = require('./trunc')
 
 var DATA = require('../build/data.json')
 var LANGS = ['en', 'fr']
@@ -25,6 +25,14 @@ var lang = () => {
   return isLangSupported(queryLang)
     ? queryLang
     : NAVLANG
+}
+
+var isCV = () => {
+  return queryString.parse(window.location.hash).cv
+}
+
+var isGistview = () => {
+  return queryString.parse(window.location.hash).gist
 }
 
 var paragraph = (txt) => {
@@ -184,18 +192,20 @@ var posts = () => {
   }
 
   post.gistview = (p) => {
-    var href = `${DATA.gistview.val}?id=${p.id}`
     var n = p[`name-${lang()}`]
     var imgSrc = IS_MOBILE
       ? `build/thumbnail-${p.id}.png`
       : `build/preview-${p.id}.gif`
+    var onclick = () => {
+      window.location.hash = queryString.stringify({ lang: lang(), gist: p.id })
+    }
 
     return yo`<div>
-      <a href="${href}" target="_blank" class="${cardClass}">
+      <div onclick=${onclick} class="${cardClass}">
         ${name(n)}
         <img src="${imgSrc}" alt="${n}" class="center db mv2 h5" />
         ${tags(p)}
-      </a>
+      </div>
     </div>`
   }
 
@@ -263,28 +273,39 @@ var footer = () => {
   </div>`
 }
 
+var main = () => {
+  return yo`<div style="background-color: ${DATA.colors.bg};">
+    ${header()}
+    ${intro()}
+    <div class="hero pa1">
+      ${posts()}
+    </div>
+    ${footer()}
+  </div>`
+}
+
+var goBackBtn = () => {
+  var l = lang()
+  var onclick = () => {
+    window.location.hash = queryString.stringify({ lang: l })
+    window.scroll(0, 0)
+  }
+  var content = {
+    en: 'Go back to site',
+    fr: 'Retour au site'
+  }[l]
+
+  return yo`<span
+      class="f5 no-underline black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box mr4"
+      style="cursor:pointer;"
+      onclick=${onclick}
+  >${content}</span>`
+}
+
 var cv = () => {
   var l = lang()
   var png = `build/cv-${l}.png`
   var pdf = `build/cv-${l}.pdf`
-
-  var goBackBtn = () => {
-    var onclick = () => {
-      window.location.hash = queryString.stringify({ lang: l })
-      window.scroll(0, 0)
-    }
-
-    var content = {
-      en: 'Go back to site',
-      fr: 'Retour au site'
-    }[l]
-
-    return yo`<span
-        class="f5 no-underline black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box mr4"
-        style="cursor:pointer;"
-        onclick=${onclick}
-    >${content}</span>`
-  }
 
   var downloadBtn = () => {
     var content = {
@@ -310,35 +331,62 @@ var cv = () => {
   </div>`
 }
 
-var body = () => {
-  var isCV = queryString.parse(window.location.hash).cv
-  var $viewPort = document.getElementById('viewport')
+var gistview = (p, fileContent) => {
+  var l = lang()
+  var name = p[`name-${l}`]
 
-  if (isCV) {
-    if (IS_MOBILE) {
+  console.log(fileContent)
+
+  return yo`<div>
+    <div>${name}</div>
+    <div>
+      <iframe
+        src="./build/${trunc(p.id)}-${trunc(p.commit)}.html"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="no"
+      ></iframe>
+    </div>
+  </div>`
+}
+
+var render = () => {
+  var IS_CV = isCV()
+  var IS_GISTVIEW = isGistview()
+
+  if (IS_MOBILE) {
+    var $viewPort = document.getElementById('viewport')
+    if (IS_CV) {
       $viewPort.setAttribute('content', DATA.viewport.cv)
-    }
-    return yo`${cv()}`
-  } else {
-    if (IS_MOBILE) {
+    } else {
       $viewPort.setAttribute('content', DATA.viewport.home)
     }
+  }
 
-    return yo`<div style="background-color: ${DATA.colors.bg};">
-      ${header()}
-      ${intro()}
-      <div class="hero pa1">
-        ${posts()}
-      </div>
-      ${footer()}
-    </div>`
+  var $root = document.getElementById('root')
+
+  if (IS_CV) {
+    yo.update($root, yo`<div id="root">${cv()}</div>`)
+  } else if (IS_GISTVIEW) {
+    var gistid = queryString.parse(window.location.hash).gist
+    var p = DATA.posts.filter(p => p.id === gistid)[0]
+    var jsonurl = `./build/${trunc(p.id)}-${trunc(p.commit)}.json`
+    window.fetch(jsonurl).then(resp => {
+      if (!resp.ok) {
+        console.error(`Problems while fetching ${jsonurl}`)
+        return {}
+      }
+      return resp.json()
+    }).then((fileContent) => {
+      yo.update($root, yo`<div id="root">${gistview(p, fileContent)}</div>`)
+    }).catch(err => {
+      console.error(`Problems building ${p.id}`)
+    })
+  } else {
+    yo.update($root, yo`<div id="root">${main()}</div>`)
   }
 }
 
-var $body = body()
+window.onhashchange = () => { render() }
 
-document.body.appendChild($body)
-
-window.onhashchange = () => {
-  yo.update($body, body())
-}
+render()
