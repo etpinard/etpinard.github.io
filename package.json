@@ -4,7 +4,8 @@
   "description": "Personal web page / page web personnelle",
   "scripts": {
     "lint": "standard --fix",
-    "test": "standard | snazzy && npm run build",
+    "test:lint": "standard | snazzy",
+    "test": "npm run test:lint && npm run build",
     "start:watch": "onchange src/data.yml -- npm run build",
     "start:budo": "budo src/index.js --serve build/bundle.js --open --live",
     "start": "npm run start:watch & npm run start:budo",
