@@ -9,10 +9,10 @@
     "start:watch": "onchange src/data.yml -- npm run build",
     "start:budo": "budo src/index.js --serve build/bundle.js --open --live",
     "start": "npm run start:watch & npm run start:budo",
-    "build:img": "node bin/build_img.js",
+    "build:ctn": "node bin/build_ctn.js",
     "build:css": "node bin/build_css.js",
     "build:js": "node bin/build_js.js",
-    "build": "npm run build:img && npm run build:css && npm run build:js"
+    "build": "npm run build:ctn && npm run build:css && npm run build:js"
   },
   "browserify": {
     "transform": [
@@ -44,6 +44,7 @@
     "yo-yoify": "^3.5.0"
   },
   "devDependencies": {
+    "@octokit/core": "^3.2.1",
     "browserify": "^17.0.0",
     "budo": "^11.6.4",
     "clean-css": "^4.2.3",
@@ -51,6 +52,7 @@
     "js-yaml": "^3.14.0",
     "onchange": "^7.1.0",
     "request": "^2.88.2",
+    "run-parallel": "^1.1.10",
     "snazzy": "^9.0.0",
     "standard": "^15.0.1",
     "uglify-js": "^3.11.4"
