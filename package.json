@@ -12,7 +12,8 @@
     "build:ctn": "node bin/build_ctn.js",
     "build:css": "node bin/build_css.js",
     "build:js": "node bin/build_js.js",
-    "build": "npm run build:ctn && npm run build:css && npm run build:js"
+    "build": "npm run build:ctn && npm run build:css && npm run build:js",
+    "clear": "find build/* | grep -v README.md | xargs rm -f"
   },
   "browserify": {
     "transform": [
