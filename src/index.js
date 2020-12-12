@@ -7,6 +7,20 @@ var trunc = require('./trunc')
 var DATA = require('../build/data.json')
 var LANGS = ['en', 'fr']
 
+var DOM_PARSER
+var parseFromString = (s) => {
+  if (!DOM_PARSER) {
+    DOM_PARSER = new window.DOMParser()
+  }
+  return DOM_PARSER.parseFromString(`<div>${s}</div>`, 'text/html').body
+}
+
+var appendFromString = (q, s) => {
+  var el = document.querySelector(q)
+  var body = parseFromString(s)
+  el.appendChild(body.firstChild)
+}
+
 var isLangSupported = (s) => LANGS.indexOf(s) !== -1
 
 var NAVLANG = (() => {
@@ -335,8 +349,6 @@ var gistview = (p, fileContent) => {
   var l = lang()
   var name = p[`name-${l}`]
   var block = fileContent.block
-  var readme = fileContent.readme
-  var files = fileContent.files
 
   var $iframe = yo`
     <div style="width:85%; height:${block.height}px; padding-top:40px; margin:auto">
@@ -351,16 +363,18 @@ var gistview = (p, fileContent) => {
       ></iframe>
     </div>`
 
-  var $files = files
-    .map(f => yo`<div><h2>${f.filename}</h2><div>${f.body}</div></div>`)
-
   return yo`<div style="background-color: ${DATA.colors.bg};">
     <div>${name}</div>
     ${$iframe}
-    <div>${readme}</div>
-    ${$files}
-    <h2>License</h2>
-    <div>${block.license}</div>
+    <div>
+      <h2>README</h2>
+      <div id="readme"></div>
+    </div>
+    <div id="files"></div>
+    <div>
+      <h2>License</h2>
+      <div>${block.license}</div>
+    </div>
   </div>`
 }
 
@@ -393,8 +407,10 @@ var render = () => {
       return resp.json()
     }).then((fileContent) => {
       yo.update($root, yo`<div id="root">${gistview(p, fileContent)}</div>`)
+      appendFromString('#readme', fileContent.readme)
     }).catch(err => {
       console.error(`Problems building ${p.id}`)
+      console.error(err)
     })
   } else {
     yo.update($root, yo`<div id="root">${main()}</div>`)

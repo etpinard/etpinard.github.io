@@ -4,6 +4,7 @@ var yaml = require('js-yaml')
 var request = require('request')
 var parallel = require('run-parallel')
 var Octokit = require('@octokit/core').Octokit
+var marked = require('marked')
 var trunc = require('../src/trunc')
 
 var CVs = ['cv-en', 'cv-fr']
@@ -109,7 +110,7 @@ DATA.posts
 
         var readme = results.filter(d => d.filename === 'README.md')[0]
         if (readme) {
-          out.readme = readme.body
+          out.readme = marked(readme.body)
         } else {
           out.readme = ''
         }
