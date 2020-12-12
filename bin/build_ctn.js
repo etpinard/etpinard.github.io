@@ -89,9 +89,46 @@ DATA.posts
         })
       parallel(tasks, (err, results) => {
         if (err) console.error(err)
+        var out = {
+          hasMinifiedIndex: false,
+          block: {},
+          readme: {},
+          files: []
+        }
+
+        var blk = results.filter(d => d.filename === '.block')[0]
+        var blkOpts = {}
+        if (blk) {
+          blk.body.split('\n').forEach(r => {
+            var pieces = r.split(': ')
+            blkOpts[pieces[0]] = pieces[1]
+          })
+        }
+        out.block.height = parseInt(blkOpts.height) || 700
+        out.block.license = (blkOpts.license || '').toUpperCase() || 'none'
+
+        var readme = results.filter(d => d.filename === 'README.md')[0]
+        if (readme) {
+          out.readme = readme.body
+        } else {
+          out.readme = ''
+        }
+
+        var files = results.filter(d => ['.block', 'README.md'].indexOf(d.filename) === -1)
+
+        out.files = files
+
+        // split results:
+        // - .block, README.md then other files
+        // - sort so that package.json and .gitignore are at the end
+
+        // use marked.js to parse README.md to HTML
+
+        // add logic for minified index.html
+
         fs.writeFile(
           path.join(BUILD, `${trunc(p.id)}-${trunc(p.commit)}.json`),
-          JSON.stringify(results),
+          JSON.stringify(out),
           (err) => { if (err) console.error(err) }
         )
       })

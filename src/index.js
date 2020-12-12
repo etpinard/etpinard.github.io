@@ -334,19 +334,33 @@ var cv = () => {
 var gistview = (p, fileContent) => {
   var l = lang()
   var name = p[`name-${l}`]
+  var block = fileContent.block
+  var readme = fileContent.readme
+  var files = fileContent.files
 
-  console.log(fileContent)
-
-  return yo`<div>
-    <div>${name}</div>
-    <div>
+  var $iframe = yo`
+    <div style="width:85%; height:${block.height}px; padding-top:40px; margin:auto">
       <iframe
         src="./build/${trunc(p.id)}-${trunc(p.commit)}.html"
+        width="100%"
+        height="100%"
         marginheight="0"
         marginwidth="0"
         scrolling="no"
+        style="border: 1px solid #DEDEDE;"
       ></iframe>
-    </div>
+    </div>`
+
+  var $files = files
+    .map(f => yo`<div><h2>${f.filename}</h2><div>${f.body}</div></div>`)
+
+  return yo`<div style="background-color: ${DATA.colors.bg};">
+    <div>${name}</div>
+    ${$iframe}
+    <div>${readme}</div>
+    ${$files}
+    <h2>License</h2>
+    <div>${block.license}</div>
   </div>`
 }
 
