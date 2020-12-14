@@ -49,7 +49,7 @@ posts:
       id: 9cce3976acc33770bd1212adcc95c9fe
       commit: 04485e8914f93d80b354e347b29966520f5bf009
 
-    - type: block
+    - type: gistview
       date: 2016-12-09
       tags: [JuliaLang, js, d3, climate, noaa]
       name-en: Interactive contour maps of surface temperature anomalies in 2016
