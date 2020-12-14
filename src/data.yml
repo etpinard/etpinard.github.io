@@ -121,9 +121,6 @@ block:
 block_full:
     type: link
     val: https://bl.ocks.org/etpinard/raw
-gistview:
-    type: link
-    val: https://etpinard.xyz/gist/
 rawgist:
     type: link
     val: https://gist.githubusercontent.com/etpinard
