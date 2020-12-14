@@ -1,11 +1,25 @@
 var yo = require('yo-yo')
 var queryString = require('query-string')
 var octicons = require('octicons')
-
 var IS_MOBILE = require('is-mobile-device')
+var trunc = require('./trunc')
 
 var DATA = require('../build/data.json')
 var LANGS = ['en', 'fr']
+
+var DOM_PARSER
+var parseFromString = (s) => {
+  if (!DOM_PARSER) {
+    DOM_PARSER = new window.DOMParser()
+  }
+  return DOM_PARSER.parseFromString(`<div>${s}</div>`, 'text/html').body
+}
+
+var appendFromString = (q, s) => {
+  var el = document.querySelector(q)
+  var body = parseFromString(s)
+  el.appendChild(body.firstChild)
+}
 
 var isLangSupported = (s) => LANGS.indexOf(s) !== -1
 
@@ -25,6 +39,14 @@ var lang = () => {
   return isLangSupported(queryLang)
     ? queryLang
     : NAVLANG
+}
+
+var isCV = () => {
+  return queryString.parse(window.location.hash).cv
+}
+
+var isGistview = () => {
+  return queryString.parse(window.location.hash).gist
 }
 
 var paragraph = (txt) => {
@@ -184,18 +206,20 @@ var posts = () => {
   }
 
   post.gistview = (p) => {
-    var href = `${DATA.gistview.val}?id=${p.id}`
     var n = p[`name-${lang()}`]
     var imgSrc = IS_MOBILE
       ? `build/thumbnail-${p.id}.png`
       : `build/preview-${p.id}.gif`
+    var onclick = () => {
+      window.location.hash = queryString.stringify({ lang: lang(), gist: p.id })
+    }
 
     return yo`<div>
-      <a href="${href}" target="_blank" class="${cardClass}">
+      <div onclick=${onclick} class="${cardClass}">
         ${name(n)}
         <img src="${imgSrc}" alt="${n}" class="center db mv2 h5" />
         ${tags(p)}
-      </a>
+      </div>
     </div>`
   }
 
@@ -263,28 +287,39 @@ var footer = () => {
   </div>`
 }
 
+var main = () => {
+  return yo`<div style="background-color: ${DATA.colors.bg};">
+    ${header()}
+    ${intro()}
+    <div class="hero pa1">
+      ${posts()}
+    </div>
+    ${footer()}
+  </div>`
+}
+
+var goBackBtn = () => {
+  var l = lang()
+  var onclick = () => {
+    window.location.hash = queryString.stringify({ lang: l })
+    window.scroll(0, 0)
+  }
+  var content = {
+    en: 'Go back to site',
+    fr: 'Retour au site'
+  }[l]
+
+  return yo`<span
+      class="f5 no-underline black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box mr4"
+      style="cursor:pointer;"
+      onclick=${onclick}
+  >${content}</span>`
+}
+
 var cv = () => {
   var l = lang()
   var png = `build/cv-${l}.png`
   var pdf = `build/cv-${l}.pdf`
-
-  var goBackBtn = () => {
-    var onclick = () => {
-      window.location.hash = queryString.stringify({ lang: l })
-      window.scroll(0, 0)
-    }
-
-    var content = {
-      en: 'Go back to site',
-      fr: 'Retour au site'
-    }[l]
-
-    return yo`<span
-        class="f5 no-underline black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box mr4"
-        style="cursor:pointer;"
-        onclick=${onclick}
-    >${content}</span>`
-  }
 
   var downloadBtn = () => {
     var content = {
@@ -310,35 +345,109 @@ var cv = () => {
   </div>`
 }
 
-var body = () => {
-  var isCV = queryString.parse(window.location.hash).cv
-  var $viewPort = document.getElementById('viewport')
+var gistview = (p, fileContent) => {
+  var l = lang()
+  var name = p[`name-${l}`]
+  var block = fileContent.block
+  var src = `./build/${trunc(p.id)}-${trunc(p.commit)}.html`
+  var dateStr = (new Date(p.date)).toDateString()
 
-  if (isCV) {
-    if (IS_MOBILE) {
+  var $iframe = yo`
+    <div style="height:${block.height}px; padding-top:40px;">
+      <iframe
+        src=${src}
+        width="100%"
+        height="100%"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="no"
+        style="border: 1px solid #DEDEDE;"
+      ></iframe>
+    </div>`
+
+  return yo`<div style="background-color: ${DATA.colors.bg};">
+    <nav class="flex justify-between pa3">
+      <h1>${name}></h1>
+      <div class="flex-grow flex items-center ttu">
+        <a href="${DATA.gist.val}/${p.id}">${trunc(p.id)}</a>
+        <div class="pl3">${goBackBtn()}</div>
+      </div>
+    </nav>
+    <div style="width:90%; margin:auto">
+      ${$iframe}
+      <div class="pv3 tr">
+        <a href="${src}"><em>open in standalone page</em></a>
+      </div>
+      <div>
+        <h2>README</h2>
+        <div id="readme" class="pb4"></div>
+      </div>
+      <div id="files"></div>
+      <div>
+        <h2>License</h2>
+        <div>${block.license}</div>
+      </div>
+      <div class="pv3 tr">
+        <em>from commit ${trunc(p.commit)} -- created on ${dateStr}</em>
+      </div>
+    </div>
+  </div>`
+}
+
+var render = () => {
+  var IS_CV = isCV()
+  var IS_GISTVIEW = isGistview()
+  var hljsInterval
+
+  if (IS_MOBILE) {
+    var $viewPort = document.getElementById('viewport')
+    if (IS_CV) {
       $viewPort.setAttribute('content', DATA.viewport.cv)
-    }
-    return yo`${cv()}`
-  } else {
-    if (IS_MOBILE) {
+    } else {
       $viewPort.setAttribute('content', DATA.viewport.home)
     }
+  }
 
-    return yo`<div style="background-color: ${DATA.colors.bg};">
-      ${header()}
-      ${intro()}
-      <div class="hero pa1">
-        ${posts()}
-      </div>
-      ${footer()}
-    </div>`
+  var $root = document.getElementById('root')
+
+  if (IS_CV) {
+    if (hljsInterval) clearInterval(hljsInterval)
+    yo.update($root, yo`<div id="root">${cv()}</div>`)
+  } else if (IS_GISTVIEW) {
+    var gistid = queryString.parse(window.location.hash).gist
+    var p = DATA.posts.filter(p => p.id === gistid)[0]
+    var jsonurl = `./build/${trunc(p.id)}-${trunc(p.commit)}.json`
+    window.fetch(jsonurl).then(resp => {
+      if (!resp.ok) {
+        console.error(`Problems while fetching ${jsonurl}`)
+        return {}
+      }
+      return resp.json()
+    }).then((fileContent) => {
+      yo.update($root, yo`<div id="root">${gistview(p, fileContent)}</div>`)
+      appendFromString('#readme', fileContent.readme)
+      var $files = fileContent.files
+        .map(f => `<h2>${f.filename}</h2><pre id="${f.filename}"><code>${f.body}</code></pre>`)
+        .join('')
+      appendFromString('#files', $files)
+      hljsInterval = setInterval(() => {
+        if (window.hljs) {
+          fileContent.files.forEach(f => {
+            window.hljs.highlightBlock(document.getElementById(f.filename))
+          })
+          clearInterval(hljsInterval)
+        }
+      }, 200)
+    }).catch(err => {
+      console.error(`Problems building ${p.id}`)
+      console.error(err)
+    })
+  } else {
+    if (hljsInterval) clearInterval(hljsInterval)
+    yo.update($root, yo`<div id="root">${main()}</div>`)
   }
 }
 
-var $body = body()
+window.onhashchange = () => { render() }
 
-document.body.appendChild($body)
-
-window.onhashchange = () => {
-  yo.update($body, body())
-}
+render()
