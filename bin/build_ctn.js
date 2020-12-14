@@ -74,7 +74,20 @@ DATA.posts
     })
   })
 
+// TODO
+// currently we assume that index.html is minified and standalone,
+// which won't work for the mapbox-gl-based gists
+
 var DONOT_INCLUDE = ['index.html', 'thumbnail.png', 'preview.gif', 'package-lock.json']
+
+var filename2score = (f) => {
+  return {
+    'index.js': -10,
+    makefile: 5,
+    'package.json': 10,
+    '.gitignore': 20
+  }[f.filename.toLowerCase()] || 0
+}
 
 DATA.posts
   .filter(p => p.type === 'gistview')
@@ -90,12 +103,7 @@ DATA.posts
         })
       parallel(tasks, (err, results) => {
         if (err) console.error(err)
-        var out = {
-          hasMinifiedIndex: false,
-          block: {},
-          readme: {},
-          files: []
-        }
+        var out = {}
 
         var blk = results.filter(d => d.filename === '.block')[0]
         var blkOpts = {}
@@ -105,27 +113,20 @@ DATA.posts
             blkOpts[pieces[0]] = pieces[1]
           })
         }
-        out.block.height = parseInt(blkOpts.height) || 700
-        out.block.license = (blkOpts.license || '').toUpperCase() || 'none'
+        out.block = {
+          height: parseInt(blkOpts.height) || 700,
+          license: (blkOpts.license || '').toUpperCase() || 'none'
+        }
 
         var readme = results.filter(d => d.filename === 'README.md')[0]
         if (readme) {
           out.readme = marked(readme.body)
         } else {
-          out.readme = ''
+          out.readme = `<p>${p['name-en']}</p><p>${p['name-fr']}</p>`
         }
 
-        var files = results.filter(d => ['.block', 'README.md'].indexOf(d.filename) === -1)
-
-        out.files = files
-
-        // split results:
-        // - .block, README.md then other files
-        // - sort so that package.json and .gitignore are at the end
-
-        // use marked.js to parse README.md to HTML
-
-        // add logic for minified index.html
+        out.files = results.filter(d => ['.block', 'README.md'].indexOf(d.filename) === -1)
+        out.files.sort((a, b) => filename2score(a) - filename2score(b))
 
         fs.writeFile(
           path.join(BUILD, `${trunc(p.id)}-${trunc(p.commit)}.json`),
