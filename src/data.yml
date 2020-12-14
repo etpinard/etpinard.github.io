@@ -85,6 +85,7 @@ posts:
       name-en: Simple test server running tape test on an html page
       name-fr: Petit server pour rouler des tests tape sur une page html pré-faite
       id: 9d492c9ec7acbf505fe9f59e3b3c0149
+      commit: 41fd27b8d9186a0ab3909ebc04ffe0e5ecea13dd
 
     - type: gist
       date: 2017-10-11
@@ -92,6 +93,7 @@ posts:
       name-en: "Orca proof-of-concept: electron app for exporting plotly graphs as images"
       name-fr: "Preuve de concept pour Orca: application electron pour exporter graphiques plotly"
       id: 26731a74bd746bc471ffeeafdc58612b
+      commit: 79294b59c23bd12b3d6b272398bb592f09d2de7c
 
     - type: oss_gitlab
       date: 2020-09-28
