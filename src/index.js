@@ -397,6 +397,7 @@ var gistview = (p, fileContent) => {
 var render = () => {
   var IS_CV = isCV()
   var IS_GISTVIEW = isGistview()
+  var hljsInterval
 
   if (IS_MOBILE) {
     var $viewPort = document.getElementById('viewport')
@@ -410,6 +411,7 @@ var render = () => {
   var $root = document.getElementById('root')
 
   if (IS_CV) {
+    if (hljsInterval) clearInterval(hljsInterval)
     yo.update($root, yo`<div id="root">${cv()}</div>`)
   } else if (IS_GISTVIEW) {
     var gistid = queryString.parse(window.location.hash).gist
@@ -428,11 +430,20 @@ var render = () => {
         .map(f => `<h2>${f.filename}</h2><pre id="${f.filename}"><code>${f.body}</code></pre>`)
         .join('')
       appendFromString('#files', $files)
+      hljsInterval = setInterval(() => {
+        if (window.hljs) {
+          fileContent.files.forEach(f => {
+            window.hljs.highlightBlock(document.getElementById(f.filename))
+          })
+          clearInterval(hljsInterval)
+        }
+      }, 200)
     }).catch(err => {
       console.error(`Problems building ${p.id}`)
       console.error(err)
     })
   } else {
+    if (hljsInterval) clearInterval(hljsInterval)
     yo.update($root, yo`<div id="root">${main()}</div>`)
   }
 }
