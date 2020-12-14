@@ -349,11 +349,13 @@ var gistview = (p, fileContent) => {
   var l = lang()
   var name = p[`name-${l}`]
   var block = fileContent.block
+  var src = `./build/${trunc(p.id)}-${trunc(p.commit)}.html`
+  var dateStr = (new Date(p.date)).toDateString()
 
   var $iframe = yo`
-    <div style="width:85%; height:${block.height}px; padding-top:40px; margin:auto">
+    <div style="height:${block.height}px; padding-top:40px;">
       <iframe
-        src="./build/${trunc(p.id)}-${trunc(p.commit)}.html"
+        src=${src}
         width="100%"
         height="100%"
         marginheight="0"
@@ -364,16 +366,30 @@ var gistview = (p, fileContent) => {
     </div>`
 
   return yo`<div style="background-color: ${DATA.colors.bg};">
-    <div>${name}</div>
-    ${$iframe}
-    <div>
-      <h2>README</h2>
-      <div id="readme"></div>
-    </div>
-    <div id="files"></div>
-    <div>
-      <h2>License</h2>
-      <div>${block.license}</div>
+    <nav class="flex justify-between pa3">
+      <h1>${name}></h1>
+      <div class="flex-grow flex items-center ttu">
+        <a href="${DATA.gist.val}/${p.id}">${trunc(p.id)}</a>
+        <div class="pl3">${goBackBtn()}</div>
+      </div>
+    </nav>
+    <div style="width:90%; margin:auto">
+      ${$iframe}
+      <div class="pv3 tr">
+        <a href="${src}"><em>open in standalone page</em></a>
+      </div>
+      <div>
+        <h2>README</h2>
+        <div id="readme" class="pb4"></div>
+      </div>
+      <div id="files"></div>
+      <div>
+        <h2>License</h2>
+        <div>${block.license}</div>
+      </div>
+      <div class="pv3 tr">
+        <em>from commit ${trunc(p.commit)} -- created on ${dateStr}</em>
+      </div>
     </div>
   </div>`
 }
@@ -408,6 +424,10 @@ var render = () => {
     }).then((fileContent) => {
       yo.update($root, yo`<div id="root">${gistview(p, fileContent)}</div>`)
       appendFromString('#readme', fileContent.readme)
+      var $files = fileContent.files
+        .map(f => `<h2>${f.filename}</h2><pre id="${f.filename}"><code>${f.body}</code></pre>`)
+        .join('')
+      appendFromString('#files', $files)
     }).catch(err => {
       console.error(`Problems building ${p.id}`)
       console.error(err)
