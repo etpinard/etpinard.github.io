@@ -113,7 +113,7 @@ var header = () => {
     var letters = _letters
       .map((l, i) => yo`<span class="${rands[i]} hover-blue">${l}</span>`)
 
-    return yo`<div class="flex pt3 pl3 f1 fw8">
+    return yo`<div class="flex pt3 pl3 f1 fw9">
       <span class="hover-blue">@</span>
       ${letters}
     </div>`
@@ -177,7 +177,7 @@ var posts = () => {
   }
 
   var name = (n) => {
-    return yo`<span class="db f5 pv3 fw6 h2">${n}</span>`
+    return yo`<span class="db f5 pv3 fw9 h2">${n}</span>`
   }
 
   var icon = (k) => {
