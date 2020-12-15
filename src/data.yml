@@ -147,11 +147,11 @@ email:
     val: info@etpinard.xyz
 gpg-en:
     type: link
-    val: ./key.pub
+    val: ./assets/key.pub
     content: here
 gpg-fr:
     type: link
-    val: ./key.pub
+    val: ./assets/key.pub
     content: ici
 name:
     type: reverse-str
