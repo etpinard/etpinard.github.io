@@ -79,6 +79,7 @@ var paragraph = (txt) => {
       case 'cv':
         var onclick = () => {
           window.location.hash = queryString.stringify({ lang: lang(), cv: true })
+          window.scroll(0, 0)
         }
         return yo`<span
           class="dark-blue hover-blue"
@@ -212,6 +213,7 @@ var posts = () => {
       : `build/preview-${p.id}.gif`
     var onclick = () => {
       window.location.hash = queryString.stringify({ lang: lang(), gist: p.id })
+      window.scroll(0, 0)
     }
 
     return yo`<div>
