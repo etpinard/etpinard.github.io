@@ -67,6 +67,7 @@ posts:
 
     - type: oss
       date: 2016-12-01
+      host: github
       tags: [js, npm]
       name: npm-link-check
       description-en: CLI utility that checks whether a project's current node modules tree contains npm-link'ed packages
@@ -74,6 +75,7 @@ posts:
 
     - type: oss
       date: 2016-12-08
+      host: github
       tags: [js, npm, d3, rollup]
       name: d3-geo-projection-picker
       description-en: Utility to hand-picked d3-geo projections instead of relying of the full d3-geo-projection module
@@ -95,15 +97,17 @@ posts:
       id: 26731a74bd746bc471ffeeafdc58612b
       commit: 79294b59c23bd12b3d6b272398bb592f09d2de7c
 
-    - type: oss_gitlab
+    - type: oss
       date: 2020-09-28
+      host: gitlab
       tags: [lineageos, degoogle]
       name: lineageos-install-docs
       description-en: "LineageOS 17.1 installation docs for a Motorola G7+ and degoogled privacy-focused config steps"
       description-fr: "Documentation pour installer LineageOS 17.1 sur un Motorola G7+ et configuration pour un appereil degooglé"
 
-    - type: oss_gitlab
+    - type: oss
       date: 2020-10-16
+      host: gitlab
       tags: [calcurse, git, signal, degoogle]
       name: calcurserve
       description-en: "Recipe for building your own 100% private calendar app using calcurse, git and signal-cli"
