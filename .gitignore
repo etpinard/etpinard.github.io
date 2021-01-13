@@ -2,3 +2,5 @@ node_modules
 
 build/*
 !build/README.md
+
+assets/*.orig.*

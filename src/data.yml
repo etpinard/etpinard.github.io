@@ -104,6 +104,8 @@ posts:
       name: lineageos-install-docs
       description-en: "LineageOS 17.1 installation docs for a Motorola G7+ and degoogled privacy-focused config steps"
       description-fr: "Documentation pour installer LineageOS 17.1 sur un Motorola G7+ et configuration pour un appereil degooglé"
+      preview: lineageos.gif
+      thumbnail: lineageos.png
 
     - type: oss
       date: 2020-10-16
@@ -112,6 +114,8 @@ posts:
       name: calcurserve
       description-en: "Recipe for building your own 100% private calendar app using calcurse, git and signal-cli"
       description-fr: "Recette pour concevoir une application de calendrier 100% privée avec calcurse, git et signal-cli"
+      preview: calcurserve.gif
+      thumbnail: calcurserve.png
 
 footer-en: |
     This @siterepo is hosted on @ghpags and built with @yoyo / @tachyons / @heropatterns.
