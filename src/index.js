@@ -230,10 +230,10 @@ var posts = () => {
     var href = `${domain}/${p.name}`
     var desc = p[`description-${lang()}`]
     var imgName = IS_MOBILE ? p.thumbnail : p.preview
-    var $icon = imgName ?
-      yo`<img src="assets/${imgName}" alt="${p.name}"
-              height="184px" class="center db mv2" />` :
-      icon('repo')
+    var $icon = imgName
+      ? yo`<img src="assets/${imgName}" alt="${p.name}"
+              height="184px" class="center db mv2" />`
+      : icon('repo')
 
     return yo`<div>
       <a href="${href}" target="_blank" class="${cardClass}">
