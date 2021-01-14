@@ -226,29 +226,19 @@ var posts = () => {
   }
 
   post.oss = (p) => {
-    var href = `${DATA.github.val}/${p.name}`
+    var domain = DATA[p.host].val
+    var href = `${domain}/${p.name}`
     var desc = p[`description-${lang()}`]
+    var imgName = IS_MOBILE ? p.thumbnail : p.preview
+    var $icon = imgName
+      ? yo`<img src="assets/${imgName}" alt="${p.name}"
+              height="184px" class="center db mv2" />`
+      : icon('repo')
 
     return yo`<div>
       <a href="${href}" target="_blank" class="${cardClass}">
         ${name(p.name)}
-        ${icon('repo')}
-        <div class="h4 pv2">
-          <p class="f6" style="text-align: justify;">${desc}</p>
-          ${tags(p)}
-        </div>
-      </a>
-    </div>`
-  }
-
-  post.oss_gitlab = (p) => {
-    var href = `${DATA.gitlab.val}/${p.name}`
-    var desc = p[`description-${lang()}`]
-
-    return yo`<div>
-      <a href="${href}" target="_blank" class="${cardClass}">
-        ${name(p.name)}
-        ${icon('repo')}
+        ${$icon}
         <div class="h4 pv2">
           <p class="f6" style="text-align: justify;">${desc}</p>
           ${tags(p)}

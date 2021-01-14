@@ -1,1 +1,9 @@
 node_modules
+<<<<<<< HEAD
+=======
+
+build/*
+!build/README.md
+
+assets/*.orig.*
+>>>>>>> source
