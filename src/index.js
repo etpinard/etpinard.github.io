@@ -69,7 +69,6 @@ var paragraph = (txt) => {
       case 'link':
         return yo`<a
           href="${val}"
-          target="_blank"
           class="no-underline dark-blue hover-blue"
         >${content}</a>`
       case 'reverse-str':
@@ -198,7 +197,7 @@ var posts = () => {
       : `build/preview-${p.id}.gif`
 
     return yo`<div>
-      <a href="${href}" target="_blank" class="${cardClass}">
+      <a href="${href}" class="${cardClass}">
         ${name(n)}
         <img src="${imgSrc}" alt="${n}" class="center db mv2 h5" />
         ${tags(p)}
@@ -236,7 +235,7 @@ var posts = () => {
       : icon('repo')
 
     return yo`<div>
-      <a href="${href}" target="_blank" class="${cardClass}">
+      <a href="${href}" class="${cardClass}">
         ${name(p.name)}
         ${$icon}
         <div class="h4 pv2">
@@ -252,7 +251,7 @@ var posts = () => {
     var n = p[`name-${lang()}`]
 
     return yo`<div>
-      <a href="${href}" target="_blank" class="${cardClass}">
+      <a href="${href}" class="${cardClass}">
         ${name(n)}
         ${icon('file-code')}
         <div class="h4 pt5 pb2">
