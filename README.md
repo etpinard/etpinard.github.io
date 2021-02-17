@@ -1,7 +1,5 @@
 # etpinard.xyz
 
-[![Build Status](https://travis-ci.org/etpinard/etpinard.github.io.svg?branch=master)](https://travis-ci.org/etpinard/etpinard.github.io)
-
 [![Dependency Status](https://david-dm.org/etpinard/etpinard.github.io.svg?style=flat-square)](https://david-dm.org/etpinard/etpinard.github.io)
 [![devDependency Status](https://david-dm.org/etpinard/etpinard.github.io/dev-status.svg?style=flat-square)](https://david-dm.org/etpinard/etpinard.github.io?type=dev)
 
