@@ -18,16 +18,19 @@ jobs:
         node-version: '14'
     - name: JS deps
       run: npm ci
-    - name: Build site
+    - name: Setup github-actions[bot]
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+    - name: Fetch and checkout master branch
       run: |
         git fetch origin master:master
         git checkout master
         git merge source --no-commit
-        npm run build
+    - name: Build site
+      run: npm run build
     - name: Commit files
       run: |
-        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
         git add --all
         git commit -m "build: ${GITHUB_RUN_NUMBER}"
     - name: Deploy changes to master branch
