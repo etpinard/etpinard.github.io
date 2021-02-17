@@ -45,7 +45,7 @@
     "yo-yoify": "^3.5.0"
   },
   "devDependencies": {
-    "@octokit/core": "^3.2.4",
+    "@octokit/core": "^3.2.5",
     "browserify": "^17.0.0",
     "budo": "^11.6.4",
     "clean-css": "^4.2.3",
