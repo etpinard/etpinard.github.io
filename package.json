@@ -57,6 +57,6 @@
     "run-parallel": "^1.2.0",
     "snazzy": "^9.0.0",
     "standard": "^15.0.1",
-    "uglify-js": "^3.12.1"
+    "uglify-js": "^3.12.8"
   }
 }
