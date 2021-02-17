@@ -51,7 +51,7 @@
     "clean-css": "^4.2.3",
     "fs-extra": "^3.0.1",
     "js-yaml": "^3.14.1",
-    "marked": "^1.2.7",
+    "marked": "^2.0.0",
     "onchange": "^7.1.0",
     "request": "^2.88.2",
     "run-parallel": "^1.1.10",
