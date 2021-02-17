@@ -54,7 +54,7 @@
     "marked": "^2.0.0",
     "onchange": "^7.1.0",
     "request": "^2.88.2",
-    "run-parallel": "^1.1.10",
+    "run-parallel": "^1.2.0",
     "snazzy": "^9.0.0",
     "standard": "^15.0.1",
     "uglify-js": "^3.12.1"
