@@ -45,18 +45,18 @@
     "yo-yoify": "^3.5.0"
   },
   "devDependencies": {
-    "@octokit/core": "^3.2.4",
+    "@octokit/core": "^3.2.5",
     "browserify": "^17.0.0",
     "budo": "^11.6.4",
     "clean-css": "^4.2.3",
     "fs-extra": "^3.0.1",
     "js-yaml": "^3.14.1",
-    "marked": "^1.2.7",
+    "marked": "^2.0.0",
     "onchange": "^7.1.0",
     "request": "^2.88.2",
-    "run-parallel": "^1.1.10",
+    "run-parallel": "^1.2.0",
     "snazzy": "^9.0.0",
     "standard": "^15.0.1",
-    "uglify-js": "^3.12.1"
+    "uglify-js": "^3.12.8"
   }
 }
