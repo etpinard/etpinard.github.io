@@ -3,7 +3,21 @@ body {
 }
 
 p {
-  font-family: "MerriweatherRegular";
+  font-family: "Merriweather";
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url('/assets/MerriweatherBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url('/assets/MerriweatherRegular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
